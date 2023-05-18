@@ -1,4 +1,19 @@
 html{
     background-color: #232323;
     color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.title{
+    background-color: #ddd;
+    color: #1e1e1e;
+    padding: .5rem;
+    margin: 1rem;
+    width: fit-content;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
 }
