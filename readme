@@ -1,0 +1,14 @@
+Segunda Entrega
+
+
+IDEA     == eComerce de tecnologia con cositas
+RECORDAR == Queremos resolver un problema, crear una solucion para el usuario, ofrecer algo de valor.
+            de manera optimizada, corta y funcional
+CONSIGNA == - Entradas y salidas por alert y prompt
+            - Funciones / arrays de objetos / Class & Constructor / metodos pro
+
+-- PROCEDIMIENTO --
+    1) Presentacion al usuario
+    2) Preguntar las categorias y dirigir a los productos corresponidentes
+    3) Mostrar los Productos
+    4) Dar opcion a cambio de moneda y Descuentos (puede ser: 20% si lleva 2 productos iguales (depende el producto))
