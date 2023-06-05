@@ -98,7 +98,7 @@ class Shopping{
 
 const startShopping = () => {
     while (welcome !== "ESC") {
-        welcome = prompt(`Welcome to Swift TECH\n\nPlease select one category!\n\n${cart.showCategory()}\n\n"ESC" para ir al carrito`).toUpperCase();
+        welcome = prompt(`Bienvenido a Swift TECH\n\nPor favor seleccione una Categoria!\n\n${cart.showCategory()}\n\n"ESC" para ir al carrito`).toUpperCase();
         
         if(welcome===""){
             break
