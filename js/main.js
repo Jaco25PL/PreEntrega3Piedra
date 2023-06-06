@@ -1,3 +1,6 @@
+let welcome = "";
+let totalPrice = 0;
+
 const productsList = [
     {N: 1,id: "Phone", brand:"Apple", model: "iPhone 14", quality: "Top", price: 1199},
     {N: 2,id: "Phone", brand:"Apple", model: "iPhone SE", quality: "Medium", price: 499},
@@ -148,7 +151,4 @@ const checkOut = () =>{
 }
 
 const cart = new Shopping();
-let welcome = "";
-let totalPrice = 0;
-
 startShopping();
