@@ -5,29 +5,106 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=`, initial-scale=1.0">
 
+<!-- iconst from bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> 
+
 <!-- styles - link css -->
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="css/main.css">
 
 <!-- fonts by google-fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
-    <title>Welcome - SwiftTECH</title>
+    <title>Welcome | SwiftTECH</title>
 
 </head>
 <body>
-    <div class="present__container">
-        <div class="present" onclick="toggleShadow()">
-            <h1 class="present__title">Swift TECH</h1>
-            <p class="present__subtitle">Welcome to the fastest online tech shop</p>
+
+    <header class="head">
+        <div class="head__container">
+            <div class="head__item logo"><a href="index.html"><img src="img/logo.png" width="200" alt="SwiftTECH"></a></div>
+            <div class="head__item find">
+                <input class="find__input" type="text" placeholder="Busca un Producto">
+                <button class="head-btn"><i class="find-icon bi bi-search"></i></button></div>
+            <div class="head__item cart"><a href="cart.html" target="_blank"><i class="cart-icon bi bi-bag"></i></a></div>
         </div>
+    </header>
+
+    <div class="sec__category">
+        <ul class="category__list">
+            <li class="category__items" id="Phone">
+                <div class="category__item" id="catPhone">
+                    <img class="category__img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="category"><span class="category__text">Celulares</span>
+                </div>
+            </li>
+            <li class="category__items" id="Music">
+                <div class="category__item" id="catMusic">
+                    <img class="category__img" src="https://f.fcdn.app/imgs/cfbcc9/amvstore.com.uy/amvsuy/8ef0/original/catalogo/2416_2416_1/2000-2000/apple-airpods-max-plateado-mgyj3am-apple-airpods-max-plateado-mgyj3am.jpg" alt="category"><span class="category__text">Auriculares</span>
+                </div>
+            </li>
+            <li class="category__items" id="Game Console">
+                <div class="category__item" id="catGame">
+                    <img class="category__img" src="https://i5.walmartimages.com.mx/mg/gm/1p/images/product-images/img_large/00071171954889l.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="category"><span class="category__text">Consolas</span>
+                </div>
+            </li>
+            <li class="category__items" id="Laptop">
+                <div class="category__item" id="catLaptop">
+                    <img class="category__img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664497359481" alt="category"><span class="category__text">NoteBook</span>
+                </div>
+            </li>
+            <li class="category__items" id="Smart Watch">
+                <div class="category__item" id="catSW">
+                    <img class="category__img" src="https://m.media-amazon.com/images/I/71-bUn+jA1L.jpg" alt="category"><span class="category__text">Smart Watch</span>
+                </div>
+            </li>
+        </ul>
     </div>
 
+    <!-- PRODUCTOS -->
 
+    <section class="sec__products" >
+        <div class="products__container">
+            <div class="category__title-container">
+                <h1 class="category__title" id="categoryTitle">Todos los Productos</h1>
+            </div>
+            <div class="products__items">
+                <div class="category__products"  id="productsCont">
+                    <!-- JS RENDER -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- footer -->
+
+    <footer class="footer__container">
+        <div class="footer">
+            <div class="footer__form">
+                <form class="form" id="form">
+                    <div class="form__input-cont">
+                        <input class="find__input form__input" type="text" placeholder="Ingrese su Nombre" id="formUserName">
+                        <span class="form-alert" id="alertUserName"></span>
+                    </div>
+                    
+                    <div class="form__input-cont">
+                        <input class="find__input form__input tel__input" type="number" placeholder="Numero de Contacto" id="formUserTel">
+                        <span class="form-alert" id="alertUserTel"></span>
+                    </div>
+                    <button onclick="valForm()" class="btn form-btn" type="button" id="sendForm">ENVIAR</button>
+                </form>
+            </div>
+
+            <div class="copyRigth__container">
+                <span>© SwiftTECH 2023</span>
+            </div>
+        </div>
+    </footer>
     <!-- link JavaScript -->
+    <script src="js/functions.js"></script>
+    <script src="js/store.js"></script>
     <script src="js/main.js"></script>
-    
+
 </body>
 </html>
 

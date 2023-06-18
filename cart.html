@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<!-- iconst from bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> 
+
+<!-- styles - link css -->
+    <link rel="stylesheet" href="css/main.css">
+    
+    <title>Carrito | SwiftTECH</title>
+
+</head>
+<body>
+
+    <header class="head">
+        <div class="head__container">
+            <div class="head__item logo"><a href="index.html"><img src="img/logo.png" width="200" alt="SwiftTECH"></a></div>
+            <div class="head__item find">
+                <input class="find__input" type="text" placeholder="Busca un Producto">
+                <button class="head-btn"><i class="find-icon bi bi-search"></i></button></div>
+            <div class="head__item cart"><a href="cart.html" target="_blank"><i class="cart-icon bi bi-bag"></i></a></div>
+        </div>
+    </header>
+
+    <section class="sec__products">
+        <div class="cart__products-cont">
+            <div class="cart__name">
+                <h1>Productos Seleccionados</h1>
+            </div>
+            <div class="cart__element">
+                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
+                <div class="cart__element-name"><p>Nombre del Producto</p></div>
+                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
+                <button type="button" class="cart__element-remove">Remover del Carrito</button>
+            </div>
+
+            <div class="cart__element">
+                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
+                <div class="cart__element-name"><p>Nombre del Producto</p></div>
+                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
+                <button type="button" class="cart__element-remove">Remover del Carrito</button>
+            </div>
+
+            <div class="cart__element">
+                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
+                <div class="cart__element-name"><p>Nombre del Producto</p></div>
+                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
+                <button type="button" class="cart__element-remove">Remover del Carrito</button>
+            </div>
+
+            <div class="cart__element">
+                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
+                <div class="cart__element-name"><p>Nombre del Producto</p></div>
+                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
+                <button type="button" class="cart__element-remove">Remover del Carrito</button>
+            </div>
+
+            <div class="cart__element">
+                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
+                <div class="cart__element-name"><p>Nombre del Producto</p></div>
+                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
+                <button type="button" class="cart__element-remove">Remover del Carrito</button>
+            </div>
+
+            <div class="cart__element">
+                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
+                <div class="cart__element-name"><p>Nombre del Producto</p></div>
+                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
+                <button type="button" class="cart__element-remove">Remover del Carrito</button>
+            </div>
+
+            <div>
+                <button type="button">Ir a Pagar</button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer__container">
+        <div class="footer">
+            <div class="footer__form">
+                <form class="form" id="form">
+                    <div class="form__input-cont">
+                        <input class="find__input form__input" type="text" placeholder="Ingrese su Nombre" id="formUserName">
+                        <span class="form-alert" id="alertUserName"></span>
+                    </div>
+                    
+                    <div class="form__input-cont">
+                        <input class="find__input form__input tel__input" type="number" placeholder="Numero de Contacto" id="formUserTel">
+                        <span class="form-alert" id="alertUserTel"></span>
+                    </div>
+                    <button onclick="valForm()" class="btn form-btn" type="button" id="sendForm">ENVIAR</button>
+                </form>
+            </div>
+
+            <div class="copyRigth__container">
+                <span>© SwiftTECH 2023</span>
+            </div>
+        </div>
+    </footer>
+    <!-- link JavaScript -->
+    <script src="js/functions.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
