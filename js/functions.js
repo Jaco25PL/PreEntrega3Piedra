@@ -1,5 +1,4 @@
 
-
 // storage
 function setProducts() {
     localStorage.setItem("allProducts", JSON.stringify(productsList));
@@ -8,12 +7,43 @@ function getProducts() {
     return JSON.parse(localStorage.getItem("allProducts"))
 }
 
+// bag storage
+function setProductsBag(item) {
+    localStorage.setItem("allBagProducts", JSON.stringify(item));
+}
+function getProductsBag() {
+    return JSON.parse(localStorage.getItem("allBagProducts")) || [];
+}
+
+// up to date buttons addBAg
+function updateAddBtn(){
+    addBtn = document.querySelectorAll(".btn-addBag")
+
+    addBtn.forEach(item => {
+        item.addEventListener("click", addProductBag);
+    })
+}
+
+// add to bag
+function addProductBag(e) {
+
+    const getBag = getProductsBag();
+    const allProducts = getProducts();
+
+    let id = e.currentTarget.id
+    const find = allProducts.find(item => item.id === parseInt(id))
+
+    getBag.push(find);
+    setProductsBag(getBag)
+}
+
 
 // renderizar categorias y productos 
 function catProduct(category) {
     
     let render = "";
     category.forEach(item => {
+        
         render += `
             <div class="product">
                 <div class="product__img-cont">
@@ -25,12 +55,13 @@ function catProduct(category) {
                         <p>$${item.price}</p>
                         <span>USD</span>
                     </div>
-                    <button id="btnAddCart" type="button" class="btn">Add to Cart</button>
+                    <button id="${item.id}" type="button" class="btn btn-addBag">Add to Cart</button>
                 </div>
             </div>`
     });
 
-     productsCont.innerHTML = render;
+    productsCont.innerHTML = render;
+    updateAddBtn();
 }
 
 
@@ -50,6 +81,7 @@ function selectCategory(){
             catTitle.innerHTML = element.id;
         })
     })
+
 }
 
 // form validation
@@ -77,4 +109,3 @@ function valForm() {
 
     form.submit();
 }
-

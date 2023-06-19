@@ -25,58 +25,22 @@
         </div>
     </header>
 
-    <section class="sec__products">
-        <div class="cart__products-cont">
-            <div class="cart__name">
-                <h1>Productos Seleccionados</h1>
+    <section class="sec__bag">
+        <div class="bag__cont">
+            <div class="bag__name">
+                <h1 class="bag__title">Productos Seleccionados</h1>
             </div>
-            <div class="cart__element">
-                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
-                <div class="cart__element-name"><p>Nombre del Producto</p></div>
-                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
-                <button type="button" class="cart__element-remove">Remover del Carrito</button>
+            <div class="bag__products" id="showBag">
+                <!-- RENDER IN JS -->
             </div>
-
-            <div class="cart__element">
-                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
-                <div class="cart__element-name"><p>Nombre del Producto</p></div>
-                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
-                <button type="button" class="cart__element-remove">Remover del Carrito</button>
-            </div>
-
-            <div class="cart__element">
-                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
-                <div class="cart__element-name"><p>Nombre del Producto</p></div>
-                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
-                <button type="button" class="cart__element-remove">Remover del Carrito</button>
-            </div>
-
-            <div class="cart__element">
-                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
-                <div class="cart__element-name"><p>Nombre del Producto</p></div>
-                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
-                <button type="button" class="cart__element-remove">Remover del Carrito</button>
-            </div>
-
-            <div class="cart__element">
-                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
-                <div class="cart__element-name"><p>Nombre del Producto</p></div>
-                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
-                <button type="button" class="cart__element-remove">Remover del Carrito</button>
-            </div>
-
-            <div class="cart__element">
-                <img class="cart__element-img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
-                <div class="cart__element-name"><p>Nombre del Producto</p></div>
-                <div class="cart__element-price"><p>$1000</p><span>USD</span></div>
-                <button type="button" class="cart__element-remove">Remover del Carrito</button>
-            </div>
-
-            <div>
-                <button type="button">Ir a Pagar</button>
-            </div>
-
         </div>
+
+        <div class="total__container">
+            <div class="toal">Total a Pagar</div>
+            <div class="toal"><span id="totalAmount"></span><span>USD</span></div>
+            <button class="btn btn-pagar" type="button">Ir a Pagar</button>
+        </div>
+
     </section>
 
     <footer class="footer__container">
@@ -102,9 +66,10 @@
         </div>
     </footer>
     <!-- link JavaScript -->
-    <script src="js/functions.js"></script>
-    <script src="js/store.js"></script>
-    <script src="js/main.js"></script>
+    <!-- <script src="js/store.js"></script> -->
+    <!-- <script src="js/main.js"></script> -->
+    <!-- <script src="js/functions.js"></script> -->
+    <script src="js/bag.js"></script>
 
 </body>
 </html>

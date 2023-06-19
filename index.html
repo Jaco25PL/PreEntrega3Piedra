@@ -28,9 +28,11 @@
                 <input class="find__input" type="text" placeholder="Busca un Producto">
                 <button class="head-btn"><i class="find-icon bi bi-search"></i></button></div>
             <div class="head__item cart"><a href="cart.html" target="_blank"><i class="cart-icon bi bi-bag"></i></a></div>
+            <!-- <div class="head__item cart"><button class="bag-btn" type="button" id="showBag"><i class="cart-icon bi bi-bag"></i></button></div> -->
         </div>
     </header>
 
+    <!-- CATEGORYS -->
     <div class="sec__category">
         <ul class="category__list">
             <li class="category__items" id="Phone">
@@ -61,6 +63,14 @@
         </ul>
     </div>
 
+    <!-- IMG VIWER -->
+
+    <div class="view" id="viewImg">
+         <div class="view__img-cont">
+             <img class="view__img" src="https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg" alt="Producto">
+         </div>
+     </div>
+
     <!-- PRODUCTOS -->
 
     <section class="sec__products" >
@@ -68,7 +78,7 @@
             <div class="category__title-container">
                 <h1 class="category__title" id="categoryTitle">Todos los Productos</h1>
             </div>
-            <div class="products__items">
+            <div class="products__items" >
                 <div class="category__products"  id="productsCont">
                     <!-- JS RENDER -->
                 </div>
@@ -107,5 +117,3 @@
 
 </body>
 </html>
-
-
