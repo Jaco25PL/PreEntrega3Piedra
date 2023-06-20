@@ -39,7 +39,7 @@ function addProductBag(e) {
         getBag.push(find);
     }
 
-    console.log(getBag);
+    bagNumber()
     setProductsBag(getBag)
 }
 
@@ -89,6 +89,14 @@ function selectCategory(){
             catTitle.innerHTML = element.id;
         })
     })
+}
+
+function bagNumber(){
+    const getBag = getProductsBag();
+
+    let bagNum = document.querySelector("#bagNum");
+    let newNumber = getBag.reduce((acc, product) => acc + product.cantidad, 1);
+    bagNum.innerHTML = newNumber;
 }
 
 
