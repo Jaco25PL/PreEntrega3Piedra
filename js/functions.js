@@ -7,7 +7,6 @@ function getProducts() {
     return JSON.parse(localStorage.getItem("allProducts"))
 }
 
-// bag storage
 function setProductsBag(item) {
     localStorage.setItem("allBagProducts", JSON.stringify(item));
 }
@@ -15,7 +14,7 @@ function getProductsBag() {
     return JSON.parse(localStorage.getItem("allBagProducts")) || [];
 }
 
-// up to date buttons addBAg
+// add to bag
 function updateAddBtn(){
     addBtn = document.querySelectorAll(".btn-addBag")
 
@@ -24,48 +23,57 @@ function updateAddBtn(){
     })
 }
 
-// add to bag
 function addProductBag(e) {
 
     const getBag = getProductsBag();
     const allProducts = getProducts();
 
-    let id = e.currentTarget.id
+    let id = parseInt(e.currentTarget.id);
     const find = allProducts.find(item => item.id === parseInt(id))
 
-    getBag.push(find);
+    if(getBag.some(product => product.id === id)){
+        const index = getBag.findIndex(product => product.id === id)
+        getBag[index].cantidad++;
+    }else{
+        find.cantidad = 1;
+        getBag.push(find);
+    }
+
+    console.log(getBag);
     setProductsBag(getBag)
 }
+
 
 
 // renderizar categorias y productos 
 function catProduct(category) {
     
-    let render = "";
-    category.forEach(item => {
-        
-        render += `
-            <div class="product">
-                <div class="product__img-cont">
-                    <img class="product__img" src="${item.img}" alt="Product">
-                </div>
-                <div class="product__description">
-                    <p><b>${item.brand}</b> ${item.model}</p>
-                    <div class="product__price">
-                        <p>$${item.price}</p>
-                        <span>USD</span>
-                    </div>
-                    <button id="${item.id}" type="button" class="btn btn-addBag">Add to Cart</button>
-                </div>
-            </div>`
-    });
+    if(productsCont){    
+        let render = "";
+        category.forEach(item => {
 
-    productsCont.innerHTML = render;
+            render += `
+                <div class="product">
+                    <div class="product__img-cont">
+                        <img class="product__img" src="${item.img}" alt="Product">
+                    </div>
+                    <div class="product__description">
+                        <p><b>${item.brand}</b> ${item.model}</p>
+                        <div class="product__price">
+                            <p>$${item.price}</p>
+                            <span>USD</span>
+                        </div>
+                        <button id="${item.id}" type="button" class="btn btn-addBag">Add to Cart</button>
+                    </div>
+                </div>`
+        });
+
+        productsCont.innerHTML = render;
+    }
     updateAddBtn();
 }
 
 
-// filtrar por categoria
 function filterStore(type) {
     return store.filter(item => item.type === type);
 }
@@ -81,9 +89,78 @@ function selectCategory(){
             catTitle.innerHTML = element.id;
         })
     })
-
 }
 
+
+// CARRITO PAGINA
+
+function renderBagProducts(){
+
+    if(showBag){
+        const bag = getProductsBag();
+        let render = "";
+
+        bag.forEach(product => {
+            render += `
+            <div class="bag__element">
+                <img class="bag__element-img" src="${product.img}" alt="${product.brand}}">
+                <div class="bag__element-name"><p>${product.brand} ${product.model}</p></div>
+                <div class="bag__element-name"><p>Cantidad: ${product.cantidad}</p></div>
+                <div class="bag__element-price"><p>$${product.price}</p><span>USD</span></div>
+                <button class="btn btn-remove" type="button" id="${product.id}">Remover del Carrito</button>
+            </div>`
+        });
+
+        showBag.innerHTML = render;
+    }
+    removeBagItem();
+}
+
+function removeBagItem(){
+    btnRemove = document.querySelectorAll(".btn-remove");
+    
+    btnRemove.forEach(item => {
+        item.addEventListener("click", removeItem);
+    })
+}
+
+// remove item
+function removeItem(e){
+    const bagItems = getProductsBag();
+
+    let id = parseInt(e.currentTarget.id);
+    const index = bagItems.findIndex(product => product.id == id);
+    bagItems.splice(index, 1);
+
+    setProductsBag(bagItems);
+    renderBagProducts();
+    total();
+}
+
+function total() {
+    if(bagAmount){
+        const bag = getProductsBag();
+        let totalAmount = 0;
+        bag.forEach(item => {
+        totalAmount += item.price;
+    });
+
+    bagAmount.innerHTML = `<b>$${totalAmount}</b> `;}
+}
+
+function checkOut(){
+    const ty = document.querySelector("#ty");
+    const bagItems = getProductsBag();
+    
+    ty.innerHTML = "Gracias por tu compra!"
+    
+    bagItems.length = 0;
+    setProductsBag(bagItems);
+    total();
+    
+    renderBagProducts()
+
+}
 // form validation
 
 function valForm() {
@@ -109,3 +186,4 @@ function valForm() {
 
     form.submit();
 }
+

@@ -20,16 +20,19 @@
             <div class="head__item logo"><a href="index.html"><img src="img/logo.png" width="200" alt="SwiftTECH"></a></div>
             <div class="head__item find">
                 <input class="find__input" type="text" placeholder="Busca un Producto">
-                <button class="head-btn"><i class="find-icon bi bi-search"></i></button></div>
-            <div class="head__item cart"><a href="cart.html" target="_blank"><i class="cart-icon bi bi-bag"></i></a></div>
+                <button class="head-btn"><i class="find-icon bi bi-search"></i></button>
+            </div>
+            <div class="head__item cart"><a href="cart.html"><i class="cart-icon bi bi-bag"></i></a></div>
         </div>
     </header>
 
     <section class="sec__bag">
         <div class="bag__cont">
             <div class="bag__name">
-                <h1 class="bag__title">Productos Seleccionados</h1>
+                <h1 class="bag__text bag__title">Productos Seleccionados</h1>
+                <a class="bag__text go__index" href="index.html">Seguir Comprando</a>
             </div>
+            <span class="thank-you" id="ty"></span>
             <div class="bag__products" id="showBag">
                 <!-- RENDER IN JS -->
             </div>
@@ -38,7 +41,7 @@
         <div class="total__container">
             <div class="toal">Total a Pagar</div>
             <div class="toal"><span id="totalAmount"></span><span>USD</span></div>
-            <button class="btn btn-pagar" type="button">Ir a Pagar</button>
+            <button class="btn btn-pagar" type="button" id="checkBtn" onclick="checkOut()">Ir a Pagar</button>
         </div>
 
     </section>
@@ -65,11 +68,11 @@
             </div>
         </div>
     </footer>
-    <!-- link JavaScript -->
-    <!-- <script src="js/store.js"></script> -->
-    <!-- <script src="js/main.js"></script> -->
-    <!-- <script src="js/functions.js"></script> -->
-    <script src="js/bag.js"></script>
+<!-- link JavaScript -->
+    <script src="js/store.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/main.js"></script>
+
 
 </body>
 </html>
