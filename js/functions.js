@@ -182,8 +182,7 @@ function valForm() {
         alertUserTel.innerText = "";
     }
     
-
-    
+   
     form.submit();
 }
 
