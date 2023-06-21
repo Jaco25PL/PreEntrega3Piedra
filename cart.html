@@ -22,7 +22,10 @@
                 <input class="find__input" type="text" placeholder="Se Desbloquea en el Proyecto Final">
                 <button class="head-btn"><i class="find-icon bi bi-search"></i></button>
             </div>
-            <div class="head__item cart"><a href="cart.html" class="cart-icon-cont"><i class="cart-icon bi bi-bag"></i></a></div>
+            <div class="head__cart-regist">
+                <div class="head__item cart"><a href="cart.html" class="cart-icon-cont"><i class="cart-icon bi bi-bag"></i><span class="bag__num" id="bagNum"></span></a></div>
+                <div class="head__item"><a href="#form" class="log-btn">Registrarme</a></div>
+            </div>  
         </div>
     </header>
 
@@ -38,7 +41,7 @@
             </div>
         </div>
 
-        <div class="total__container">
+        <div class="total__container" id="bagAmountCont">
             <div class="toal">Total a Pagar</div>
             <div class="toal"><span id="totalAmount"></span><span>USD</span></div>
             <button class="btn btn-pagar" type="button" id="checkBtn" onclick="checkOut()">Ir a Pagar</button>

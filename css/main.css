@@ -12,7 +12,9 @@ html {
 body {
   background-color: #f3ecff;
 }
-
+.none{
+  display: none;
+}
 /* HEADER ------------------------------------- */
 
 .head{
@@ -26,7 +28,7 @@ body {
 
 .head__container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr; 
   align-items: center;
 }
 
@@ -39,6 +41,7 @@ body {
   background-color: #f3ecff;
   padding: .2rem .4rem;
   border-radius: .5rem;
+  position: relative;
   -webkit-border-radius: .5rem;
   -moz-border-radius: .5rem;
   -ms-border-radius: .5rem;
@@ -50,7 +53,7 @@ body {
   -o-transition: all ease-out .2s;
 }
 
-.cart-icon-cont:hover{
+.cart-icon-cont:hover, .log-btn:hover{
   transform: scale(1.15);
   -webkit-transform: scale(1.15);
   -moz-transform: scale(1.15);
@@ -61,13 +64,44 @@ body {
 .bag__num{
   background-color: #8a2be2;
   color: #fff;
-  padding: 0 .1rem;
-  border-radius: .5rem;
+  padding: 0 .5rem;
+  border-radius: 50%;
   position: absolute;
-  -webkit-border-radius: .5rem;
-  -moz-border-radius: .5rem;
-  -ms-border-radius: .5rem;
-  -o-border-radius: .5rem;
+  top: 22px;
+  left: 20px;
+  -webkit-border-radius: 50%rem;
+  -moz-border-radius: 50%rem;
+  -ms-border-radius: 50%rem;
+  -o-border-radius: 50%rem;
+}
+
+.log-btn{
+  background-color: #690074;
+  color: #f3ecff;
+  padding: .3rem;
+  border-radius: .8rem;
+  font-size: .9rem;
+  transition: all ease-out .2s;
+  -webkit-border-radius: .8rem;
+  -moz-border-radius: .8rem;
+  -ms-border-radius: .8rem;
+  -o-border-radius: .8rem;
+  -webkit-transition: all ease-out .2s;
+  -moz-transition: all ease-out .2s;
+  -ms-transition: all ease-out .2s;
+  -o-transition: all ease-out .2s;
+}
+
+.log-btn:active{
+  background-color: #330d36;
+}
+
+.head__cart-regist{
+  display: flex;
+  width: fit-content;
+  justify-self: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .head-btn{
@@ -417,6 +451,7 @@ body {
   border-radius: 2rem;
   margin: 2rem 15%;
   padding-bottom: .5rem;
+  min-height: 50vh;
   -webkit-border-radius: 2rem;
   -moz-border-radius: 2rem;
   -ms-border-radius: 2rem;

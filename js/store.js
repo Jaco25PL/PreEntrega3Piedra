@@ -1,7 +1,9 @@
 const productsList = [
     {id: 1, img: "https://f.fcdn.app/imgs/ff0128/www.covercompany.com.uy/coveuy/7b15/original/catalogo/2-3386_9569_1/2000-2000/iphone-14-128gb-6gb-ram-5g-6-1-chip-a15-bionic-oled-retina-xdr-violeta.jpg",type: "Phone", brand:"Apple", model: "iPhone 14", price: 1199},
     {id: 2, img: "https://f.fcdn.app/imgs/f7809c/www.zonatecno.com.uy/zoteuy/f594/original/catalogo/102705_102705_1/2000-2000/celular-apple-iphone-14-pro-max-256gb-6gb-deep-purple-celular-apple-iphone-14-pro-max-256gb-6gb-deep-purple.jpg",type: "Phone", brand:"Apple", model: "iPhone 14 Pro Max", price: 1700},
+    {id: 26, img: "https://f.fcdn.app/imgs/74d4da/www.market.com.uy/markuy/59f0/original/catalogo/L853_1/1920-1200/celular-samsung-s23-ultra-5g-512gb-v01.jpg",type: "Phone", brand:"Samsung", model: "Galaxy S23 Ultra", price: 1819},
     {id: 3, img: "https://f.fcdn.app/imgs/70e3aa/stienda.uy/sam/9eaa/original/catalogo/S2312888060947455801/1920-1200/samsung-galaxy-s23-128gb-5g-light-pink.jpg",type: "Phone", brand:"Samsung", model: "Galaxy S23", price: 1049},
+    {id: 28, img: "https://www.elon.se/media/catalog/product/cache/691c7eca49da472be3ce24c0b9b28e0b/1/2/121935_1_e75801c27f3cb48a09b18b1979a08bda.jpeg", price: 775},
     {id: 4, img: "https://f.fcdn.app/imgs/3f7de9/stienda.uy/sam/83d2/original/catalogo/SM-A145RZKVEUB88060948554321/800_800/samsung-galaxy-a14-lte-128-gb-green.jpg",type: "Phone", brand:"Samsung", model: "Galaxy A14", price: 259},
     {id: 5, img: "https://mobilestore.com.uy/site/wp-content/uploads/2023/04/ZDAxZjVhM2_559-484x484.png",type: "Phone", brand:"Motorola", model: "Moto G72", price: 375},
     {id: 6, img: "https://cdn.dxomark.com/wp-content/uploads/medias/post-130310/Xiaomi-12T_featured-image-packshot-review.jpg",type: "Phone", brand:"Xiaomi", model: "12 Pro", price: 499},
@@ -14,6 +16,7 @@ const productsList = [
     {id: 13, img: "https://m.media-amazon.com/images/I/51ojzJk77qL.jpg",type: "Game Console",brand: "xBox", model: "Series X", price: 600},
     {id: 14, img: "https://m.media-amazon.com/images/I/71UiJ0O6vTL.jpg",type: "Game Console",brand: "Nintendo Switch", model: "Deluxe", price: 699},
     {id: 15, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664497359481",type: "Laptop", brand: "Apple", model: "MacBook Pro", price: 2899},
+    {id: 27, img: "https://www.iplace.com.uy/ccstore/v1/images/?source=/file/v1877445152997548374/products/100000007.00-imac-apple-24-m1-8nucleos-azul-256-mgpk3cl-a.jpg&quality=0.8&outputFormat=JPEG",type: "Laptop", brand: "Apple", model: "iMac 24'", price: 2464},
     {id: 16, img: "https://f.fcdn.app/imgs/5a923c/www.covercompany.com.uy/coveuy/6cda/original/catalogo/2-3918_10531_2/1500-1500/apple-macbook-air-m2-13-6-512gb-ssd-8gb-ram-2022-espanol-starlight.jpg",type: "Laptop", brand: "Apple", model: "MacBook Air M2", price: 1829},
     {id: 17, img: "https://unitytech.uy/wp-content/uploads/2021/11/Notebook-Asus-Laptop-X515ea-bq967t-Core-i3-Gen-11-4gb-SSD-128-Gb-15.6-FHD-W10-2.jpg",type: "Laptop", brand: "ASUS", model: "X515EA", price: 599},
     {id: 18, img: "https://f.fcdn.app/imgs/546227/www.zonatecno.com.uy/zoteuy/fc45/original/catalogo/103210_103210_4/1500-1500/notebook-dell-vostro-3501-i3-1005g1-256gb-8gb-15-6-win-10p-notebook-dell-vostro-3501-i3-1005g1-256gb-8gb-15-6-win-10p.jpg",type: "Laptop", brand: "Dell", model: "Vostro 3501", price: 568},

@@ -25,11 +25,8 @@ function updateAddBtn(){
 
 function addProductBag(e) {
 
-    const getBag = getProductsBag();
-    const allProducts = getProducts();
-
     let id = parseInt(e.currentTarget.id);
-    const find = allProducts.find(item => item.id === parseInt(id))
+    const find = store.find(item => item.id === id)
 
     if(getBag.some(product => product.id === id)){
         const index = getBag.findIndex(product => product.id === id)
@@ -38,7 +35,6 @@ function addProductBag(e) {
         find.cantidad = 1;
         getBag.push(find);
     }
-
     bagNumber()
     setProductsBag(getBag)
 }
@@ -69,6 +65,9 @@ function catProduct(category) {
         });
 
         productsCont.innerHTML = render;
+        if(getBag.length > 0){
+            bagNumber()
+        }
     }
     updateAddBtn();
 }
@@ -92,10 +91,8 @@ function selectCategory(){
 }
 
 function bagNumber(){
-    const getBag = getProductsBag();
-
     let bagNum = document.querySelector("#bagNum");
-    let newNumber = getBag.reduce((acc, product) => acc + product.cantidad, 1);
+    let newNumber = getBag.reduce((acc, product) => acc + product.cantidad, 0);
     bagNum.innerHTML = newNumber;
 }
 
@@ -103,12 +100,12 @@ function bagNumber(){
 // CARRITO PAGINA
 
 function renderBagProducts(){
+    // const bag = getProductsBag();
+    let render = "";
 
-    if(showBag){
-        const bag = getProductsBag();
-        let render = "";
+    if((showBag) && (getBag.length > 0)){
 
-        bag.forEach(product => {
+        getBag.forEach(product => {
             render += `
             <div class="bag__element">
                 <img class="bag__element-img" src="${product.img}" alt="${product.brand}}">
@@ -120,6 +117,10 @@ function renderBagProducts(){
         });
 
         showBag.innerHTML = render;
+    }else if(showBag){
+        showBag.className = "bag__element-name";
+        showBag.innerText = "Tu carrito está vacio :(";
+        bagAmountCont.className = "none";   
     }
     removeBagItem();
 }
@@ -134,23 +135,21 @@ function removeBagItem(){
 
 // remove item
 function removeItem(e){
-    const bagItems = getProductsBag();
-
     let id = parseInt(e.currentTarget.id);
-    const index = bagItems.findIndex(product => product.id == id);
-    bagItems.splice(index, 1);
+    const index = getBag.findIndex(product => product.id == id);
+    getBag.splice(index, 1);
 
-    setProductsBag(bagItems);
+    setProductsBag(getBag);
     renderBagProducts();
     total();
 }
 
 function total() {
     if(bagAmount){
-        const bag = getProductsBag();
         let totalAmount = 0;
-        bag.forEach(item => {
-        totalAmount += item.price;
+        
+        getBag.forEach(item => {
+        totalAmount += item.price * item.cantidad;
     });
 
     bagAmount.innerHTML = `<b>$${totalAmount}</b> `;}
@@ -158,40 +157,33 @@ function total() {
 
 function checkOut(){
     const ty = document.querySelector("#ty");
-    const bagItems = getProductsBag();
-    
-    ty.innerHTML = "Gracias por tu compra!"
-    
-    bagItems.length = 0;
-    setProductsBag(bagItems);
+    ty.innerHTML = "Gracias por tu compra!";
+    getBag.length = 0;
+    setProductsBag(getBag);
     total();
     
-    renderBagProducts()
+    renderBagProducts();
 
 }
 // form validation
 
 function valForm() {
-    let form = document.querySelector("#form");
-    let userName = document.querySelector("#formUserName");
-    let alertUserName = document.querySelector("#alertUserName");
-    let userTel = document.querySelector("#formUserTel");
-    let alertUserTel = document.querySelector("#alertUserTel");
-    
     if(userName.value == ""){
-        alertUserName.innerHTML = "- Debe completar este campo -"
+        alertUserName.innerText = "- Debe completar este campo -"
         return false
     }else{
-        alertUserName.innerHTML = ""
+        alertUserName.innerText = ""
     }
 
     if(userTel.value == ""){
-        alertUserTel.innerHTML = "- Completa el campo con tu numero -";
+        alertUserTel.innerText = "- Completa el campo con tu numero -";
         return false
     }else{
-        alertUserTel.innerHTML = "";
+        alertUserTel.innerText = "";
     }
-
+    
+    
     form.submit();
 }
+
 
