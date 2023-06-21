@@ -125,3 +125,16 @@ const checkOut = () =>{
 const cart = new Shopping();
 // startShopping();
 
+
+    
+    let user = userName.value;
+    userRegist(user);
+function userRegist(user){
+    if(user){
+        /*
+            - traerme el boton de registrame
+            - desabilitarlo y cambiar color y texto
+        */
+
+    }
+}
