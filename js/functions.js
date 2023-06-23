@@ -165,6 +165,7 @@ function checkOut(){
     renderBagProducts();
 
 }
+
 // form validation
 
 function valForm() {
@@ -185,6 +186,3 @@ function valForm() {
    
     form.submit();
 }
-
-
-
