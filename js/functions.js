@@ -100,7 +100,6 @@ function bagNumber(){
 // CARRITO PAGINA
 
 function renderBagProducts(){
-    // const bag = getProductsBag();
     let render = "";
 
     if((showBag) && (getBag.length > 0)){
@@ -144,6 +143,7 @@ function removeItem(e){
     total();
 }
 
+
 function total() {
     if(bagAmount){
         let totalAmount = 0;
@@ -156,19 +156,32 @@ function total() {
 }
 
 function checkOut(){
-    const ty = document.querySelector("#ty");
-    ty.innerHTML = "Gracias por tu compra!";
-    getBag.length = 0;
-    setProductsBag(getBag);
-    total();
+    let userInfo = getUserInfo();
     
+    if(userInfo){
+        getBag.length = 0;
+        setProductsBag(getBag);
+        total();
+        
+    }else{
+        console.log("meter un coso de esos como sweet alert");
+    }
     renderBagProducts();
 
+    showBag.innerText = "Gracias por tu compra! :)";
 }
 
 // form validation
+function setUserInfo(info) {
+    sessionStorage.setItem("userRegist", info);
+}
+function getUserInfo() {
+    return sessionStorage.getItem("userRegist");
+}
 
+sendForm.addEventListener("click", valForm);
 function valForm() {
+
     if(userName.value == ""){
         alertUserName.innerText = "- Debe completar este campo -"
         return false
@@ -183,6 +196,40 @@ function valForm() {
         alertUserTel.innerText = "";
     }
     
-   
-    form.submit();
+    setUserInfo(userName.value);    
+    form.submit();  
 }
+
+function userChange(){  
+    const info = getUserInfo();
+
+    if(info){
+        userLogBtn.innerHTML = info;
+        userLogBtn.classList.add("log-btn-user");
+
+        sendForm.innerText = "Nuevo Usuario";
+    }else{
+        userLogBtn.innerHTML = "Registrarme";
+    }
+
+    if(info){
+        logOut.classList.remove("none");
+    }else{
+        logOut.className = "none";
+    }
+}
+
+
+logOutBtn.addEventListener("click", userLogOut);
+function userLogOut() {
+    sessionStorage.clear();
+    location.reload();
+}
+
+function scrollBottom() {
+    userLogBtn.addEventListener("click", scrollToBottom);
+}
+
+function scrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }

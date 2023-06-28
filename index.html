@@ -29,8 +29,13 @@
                 <button class="head-btn"><i class="find-icon bi bi-search"></i></button></div>
             <div class="head__cart-regist">
                 <div class="head__item cart"><a href="cart.html" class="cart-icon-cont"><i class="cart-icon bi bi-bag"></i><span class="bag__num" id="bagNum"></span></a></div>
-                <div class="head__item"><a href="#form" class="log-btn">Registrarme</a></div>
-            </div>
+                <div class="head__item log-btn-cont">
+                    <button type="button" class="log-btn"></button>
+                    <div class="log-out-cont" id="logOutCont">
+                        <div class="log-out"><button type="button" id="logOutBtn" class="btn log-out-btn">Cerrar</button></div>
+                    </div>
+                </div>
+            </div>  
         </div>
     </header>
 
@@ -103,7 +108,7 @@
                         <input class="find__input form__input tel__input" type="number" placeholder="Numero de Contacto" id="formUserTel">
                         <span class="form-alert" id="alertUserTel"></span>
                     </div>
-                    <button onclick="valForm()" class="btn form-btn" type="button" id="sendForm">ENVIAR</button>
+                    <button class="btn form-btn" type="button" id="sendForm">ENVIAR</button=>
                 </form>
             </div>
 
@@ -113,8 +118,8 @@
         </div>
     </footer>
     <!-- link JavaScript -->
-    <script src="js/functions.js"></script>
     <script src="js/store.js"></script>
+    <script src="js/functions.js"></script>
     <script src="js/main.js"></script>
 
 </body>
