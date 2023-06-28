@@ -162,13 +162,12 @@ function checkOut(){
         getBag.length = 0;
         setProductsBag(getBag);
         total();
+        renderBagProducts();
+        showBag.innerText = "Gracias por tu compra! :)";
         
     }else{
         console.log("meter un coso de esos como sweet alert");
     }
-    renderBagProducts();
-
-    showBag.innerText = "Gracias por tu compra! :)";
 }
 
 // form validation

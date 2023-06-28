@@ -1,4 +1,6 @@
 // INDEX
+setProducts();
+
 const store = getProducts();
 const productsCont = document.querySelector("#productsCont");
 const categoryBtn = document.querySelectorAll(".category__items");
@@ -23,7 +25,6 @@ const alertUserTel = document.querySelector("#alertUserTel");
 
 
 
-setProducts();
 catProduct(getProducts());
 selectCategory();
 
