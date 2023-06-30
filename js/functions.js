@@ -4,7 +4,7 @@ function setProducts() {
     localStorage.setItem("allProducts", JSON.stringify(productsList));
 }
 function getProducts() {
-    return JSON.parse(localStorage.getItem("allProducts"))
+    return JSON.parse(localStorage.getItem("allProducts"));
 }
 
 function setProductsBag(item) {
@@ -16,7 +16,7 @@ function getProductsBag() {
 
 // add to bag
 function updateAddBtn(){
-    addBtn = document.querySelectorAll(".btn-addBag")
+    addBtn = document.querySelectorAll(".btn-addBag");
 
     addBtn.forEach(item => {
         item.addEventListener("click", addProductBag);
@@ -26,17 +26,17 @@ function updateAddBtn(){
 function addProductBag(e) {
 
     let id = parseInt(e.currentTarget.id);
-    const find = store.find(item => item.id === id)
+    const find = store.find(item => item.id === id);
 
     if(getBag.some(product => product.id === id)){
-        const index = getBag.findIndex(product => product.id === id)
+        const index = getBag.findIndex(product => product.id === id);
         getBag[index].cantidad++;
     }else{
         find.cantidad = 1;
         getBag.push(find);
     }
-    bagNumber()
-    setProductsBag(getBag)
+    bagNumber();
+    setProductsBag(getBag);
 }
 
 
@@ -66,16 +66,15 @@ function catProduct(category) {
 
         productsCont.innerHTML = render;
         if(getBag.length > 0){
-            bagNumber()
+            bagNumber();
         }
     }
     updateAddBtn();
 }
 
-
 function filterStore(type) {
     return store.filter(item => item.type === type);
-}
+}   
 
 //  navegar entre categorias
 function selectCategory(){
@@ -95,6 +94,18 @@ function bagNumber(){
     let newNumber = getBag.reduce((acc, product) => acc + product.cantidad, 0);
     bagNum.innerHTML = newNumber;
 }
+
+// SEARCH PRODUCTS
+function searchProducts(){
+
+    if(findInput){
+        findInput.addEventListener("input", () => {
+            let value = findInput.value.toUpperCase();
+            const filter = store.includes()
+        })
+    }
+}
+
 
 
 // CARRITO PAGINA
