@@ -1,0 +1,301 @@
+.head{
+    padding: 2rem 1rem;
+    position: sticky;
+    background-color: #f3ecff6b;
+    backdrop-filter: blur(10px);
+    top: 0;
+    z-index: 50;
+
+    &__container{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; 
+      align-items: center;
+    }
+
+    &__item{
+      @include center-mix(center, stretch, row);
+
+      &-img{
+        width: 12.5rem;
+      }
+    }
+
+    &-btn{
+      width: 4rem;
+      height: 2rem;
+      background-color: $white;
+      border: none;
+      border-radius: .3rem;
+      -webkit-border-radius: .3rem;
+      -moz-border-radius: .3rem;
+      -ms-border-radius: .3rem;
+      -o-border-radius: .3rem;
+      transition: all ease-out .3s;
+      -webkit-transition: all ease-out .3s;
+      -moz-transition: all ease-out .3s;
+      -ms-transition: all ease-out .3s;
+      -o-transition: all ease-out .3s;
+    
+      &:hover{
+        background-color: $medium-main;
+      }
+    
+      &:active{
+        background-color: $dark-main;
+      }
+    
+      &:hover .find-icon{
+        color: $white;
+      }
+    }
+}
+
+.cart-icon{
+  color: $medium-main;
+  font-size: 25px;
+
+  &-cont{
+    background-color: $light-main;
+    padding: .2rem .4rem;
+    border-radius: .5rem;
+    position: relative;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+    transition: all ease-out .2s;
+    -webkit-transition: all ease-out .2s;
+    -moz-transition: all ease-out .2s;
+    -ms-transition: all ease-out .2s;
+    -o-transition: all ease-out .2s;
+
+    &:hover{
+      transform: scale(1.15);
+      -webkit-transform: scale(1.15);
+      -moz-transform: scale(1.15);
+      -ms-transform: scale(1.15);
+      -o-transform: scale(1.15);
+    }
+  }
+}
+
+.bag__num{
+    background-color: $blue-violet;
+    color: $white;
+    padding: 0 .5rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    -webkit-border-radius: 50%rem;
+    -moz-border-radius: 50%rem;
+    -ms-border-radius: 50%rem;
+    -o-border-radius: 50%rem;
+}
+  
+.log-btn{
+    background-color: $yellow;
+    color: $medium-main;
+    padding: .5rem;
+    border-radius: .8rem;
+    cursor: pointer;
+    border: none;
+    font-size: .9rem;
+    font-weight: 600;
+    transition: all ease-out .2s;
+    -webkit-border-radius:.8rem;
+    -moz-border-radius:.8rem;
+    -ms-border-radius:.8rem;
+    -o-border-radius:.8rem;
+    -webkit-transition: all ease-out .2s;
+    -moz-transition: all ease-out .2s;
+    -ms-transition: all ease-out .2s;
+    -o-transition: all ease-out .2s;
+
+    &:hover{
+      transform: scale(1.15);
+      -webkit-transform: scale(1.15);
+      -moz-transform: scale(1.15);
+      -ms-transform: scale(1.15);
+      -o-transform: scale(1.15);
+    }
+
+    &:active{
+      background-color: $dark-yellow;
+    }
+
+    &-user{
+      color: $yellow;
+      background-color: $medium-main;
+    }
+}
+
+.log-btn-cont:hover .log-out-cont {
+    display: block;
+}
+  
+.log-out{
+    padding: 1rem 1.5rem;
+    margin-top: .6rem;
+    background-color: $yellow;
+    border-radius: .8rem;
+    -webkit-border-radius: .8rem;
+    -moz-border-radius: .8rem;
+    -ms-border-radius: .8rem;
+    -o-border-radius: .8rem;
+
+    &-cont{
+      position: absolute;
+      top: calc(100% - 2.8rem);
+      display: none;
+      transition: all ease-out 1s;
+      -webkit-transition: all ease-out 1s;
+      -moz-transition: all ease-out 1s;
+      -ms-transition: all ease-out 1s;
+      -o-transition: all ease-out 1s;
+    }
+
+    &-btn{
+      font-weight: 600;
+    }
+}
+
+.head__cart-regist{
+    display: flex;
+    width: fit-content;
+    justify-self: center;
+    align-items: center;
+    gap: 1rem;
+}
+  
+ 
+.find-icon{
+    color: $medium-main;
+    font-size: 20px;
+    transition: all ease-out .3s;
+}
+  
+
+  
+.find{
+    display: flex;
+    gap: .4rem;
+
+    &__input{
+      text-align: center;
+      border: none;
+      width: 22rem;
+      color: $soft-text;
+      font-size: 1.1rem;
+      padding: .3rem .3rem .3rem .5rem;
+      border-radius: .3rem;
+      -webkit-border-radius: .3rem;
+      -moz-border-radius: .3rem;
+      -ms-border-radius: .3rem;
+      -o-border-radius: .3rem;
+
+      &:focus{
+        outline: none;
+      }
+    }
+}
+
+.bag-btn{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: all ease-out .2s;
+    -webkit-transition: all ease-out .2s;
+    -moz-transition: all ease-out .2s;
+    -ms-transition: all ease-out .2s;
+    -o-transition: all ease-out .2s;
+
+    &:hover{
+      transform: scale(1.15);
+      -webkit-transform: scale(1.15);
+      -moz-transform: scale(1.15);
+      -ms-transform: scale(1.15);
+      -o-transform: scale(1.15);
+    }
+}
+
+// RESPONSIVE
+
+@media screen and (max-width: 1140px) {
+  .head{
+      padding: 1rem 0;
+
+      &__item-img{
+        width: 8rem;
+      }
+
+      &-btn{
+        width: 2.2rem;
+      }
+  }
+  .find__input{
+    width: 10rem;
+  }
+  .log-out-cont{
+    top: calc(100% - 1.3rem);
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .head__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .logo{
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .find{
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    &__input{
+      width: 18rem;
+    }
+  }
+  .head__cart-regist{
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .cart-icon{
+    font-size: 1.3rem;
+  }
+
+  .bag__num{
+    font-size: .8rem;
+    padding: 0 .4rem;
+  }
+  .log-btn{
+    font-size: 0.8rem;
+    
+    &-cont{
+      display: flex;
+      gap: .6rem;
+      align-items: center;
+
+    }
+  }
+
+  .log-out{
+    padding: 0;
+    margin: 0;
+
+    &-cont{
+      position: static;
+      display: flex;
+    }
+
+    &-btn{
+      font-size: .8rem;
+      background-color: $yellow;
+      font-size: .8rem;
+    }
+  }
+}

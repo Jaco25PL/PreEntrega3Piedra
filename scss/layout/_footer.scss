@@ -1,0 +1,47 @@
+  .footer{
+    background-color: $dark-main;
+    @include center-mix(flex-start, center, column);
+    border-radius: 1.5rem 1.5rem 0 0;
+    -webkit-border-radius: 1.5rem 1.5rem 0 0;
+    -moz-border-radius: 1.5rem 1.5rem 0 0;
+    -ms-border-radius: 1.5rem 1.5rem 0 0;
+    -o-border-radius: 1.5rem 1.5rem 0 0;
+
+    &__container{
+      margin: 1rem 10% 0;
+    }
+  }
+  
+  .form{
+    @include center-mix(flex-start, center, column);
+    margin: 2rem;
+    gap: .8rem;
+
+    &__input{
+      width: 15rem;
+      text-align: center;
+
+      &-cont{
+        @include center-mix(flex-start, center, column);
+        gap: .3rem;
+      }
+    }
+
+    &-alert{
+      color: $light-main;
+      font-weight: 600;
+    }
+
+    &-btn{
+      font-weight: 600;
+    }
+  }
+  
+  .tel__input{
+    appearance: textfield;
+  }
+
+  .copyRigth__container{
+    margin-bottom: 1rem;
+    color: $violet;
+  }

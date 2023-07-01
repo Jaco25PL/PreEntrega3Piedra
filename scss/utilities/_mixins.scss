@@ -1,0 +1,14 @@
+@mixin center-top($mix){
+    display: flex;
+    align-items: center;
+    flex-direction: $mix;
+}
+
+@mixin center-mix($j-c, $a-i, $f-d){
+    display: flex;
+    justify-content: $j-c;
+    align-items: $a-i;
+    flex-direction: $f-d;
+}
+
+

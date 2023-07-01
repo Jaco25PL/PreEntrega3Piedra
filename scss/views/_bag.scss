@@ -1,0 +1,199 @@
+.thank-you{
+    color: $dark;
+}
+  
+.sec__bag{
+    background-color: $white;
+    border-radius: 2rem;
+    margin: 2rem 15%;
+    padding-bottom: .5rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+}
+  
+.bag__products{
+    width: 100%;
+}
+  
+.bag__cont{
+    margin: 1rem;
+    min-height: 50vh;
+}
+  
+.bag__name{
+    @include center-mix(space-between, center, row);
+    width: 100%;
+    margin-top: 1rem ;
+    padding: 1rem 1rem;
+}
+  
+.bag__text{
+    color: $dark-main;
+    font-size: 2rem;
+}
+  
+.go__index{
+    background-color: $violet;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: $light-main;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    transition: all ease-out .3s;
+    -webkit-transition: all ease-out .3s;
+    -moz-transition: all ease-out .3s;
+    -ms-transition: all ease-out .3s;
+    -o-transition: all ease-out .3s;
+
+    &:hover{
+        background-color: $blue-violet;
+        transform: translateX(-2rem);
+        -webkit-transform: translateX(-2rem);
+        -moz-transform: translateX(-2rem);
+        -ms-transform: translateX(-2rem);
+        -o-transform: translateX(-2rem);
+    }
+    &:active{
+        background-color: $medium-main;
+    }
+    
+}
+  
+.bag__element{
+    background-color: $light-main;
+    @include center-mix(space-between, center, row);
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+
+    &-empty{
+        justify-content: center;
+        margin-top: 10%;
+    }
+
+    &-name, &-price{
+        color: $dark;
+        font-weight: 600;
+        display: flex;
+        gap: .5rem;
+    }
+
+    &-img{
+        width: 10rem;
+        border-radius: 1rem;
+        -webkit-border-radius: 1rem;
+        -moz-border-radius: 1rem;
+        -ms-border-radius: 1rem;
+        -o-border-radius: 1rem;
+    }
+}
+
+.bag__item-btn{
+    display: flex;
+    justify-self: end;
+}
+  
+.btn-remove{
+    outline: 1px solid $dark-main;
+
+    &:hover{
+        background-color: $delet;
+        color: $light-main;
+        outline: none;
+        transform: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;   
+    }
+}
+  
+.total__container{
+  background-color: $dark-main;
+  margin: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  @include center-mix(space-between, center, row);
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
+.btn-pagar{
+    background-color: $violet;
+    font-size: 1.2rem;
+    color: $white;
+    padding: .5rem 1rem;
+
+    &:hover{
+        background-color: $blue-violet;
+    }
+    &:active{
+        background-color: $medium-main;
+    }
+}
+
+// RESPONSIVE
+
+@media screen and (max-width: 1140px) {
+    .bag__title{
+        font-size: 1.5rem;
+    }
+    .go__index{
+        font-size: 1.5rem;
+    }
+}
+  
+@media screen and (max-width: 760px) {
+    .bag__title{
+        font-size: 1rem;
+    }
+    .go__index{
+        font-size: 1rem;
+    }
+    .sec__bag{
+        margin: 2rem 5%;
+    }
+    .bag__element{
+        margin: 1rem 0;
+        padding: .8rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        gap: .8rem;
+        &-img{
+            width: 8rem;
+            grid-row: 1 / span 3;
+        }
+        &-name{
+            font-size: .8rem;
+            &:nth-child(2){
+                grid-column: 2;
+                grid-row: 1;
+            }
+            &:nth-child(3){
+                grid-column: 2;
+                grid-row: 2;
+            }
+        }
+        &-price{
+            grid-column: 2;
+            grid-row: 3;
+        }
+    }
+    .btn-remove{
+        grid-column: 1 / span 2;
+        grid-row: 4;
+    }
+}
+

@@ -1,0 +1,37 @@
+.btn{
+    padding: .5rem;
+    border-radius: .5rem;
+    border: none;
+    background-color: $light-main;
+    color: $medium-main;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+    transition: all ease-out .2s;
+    -webkit-transition: all ease-out .2s;
+    -moz-transition: all ease-out .2s;
+    -ms-transition: all ease-out .2s;
+    -o-transition: all ease-out .2s;
+
+    &:hover{
+        color: $white;
+        background-color: $dark-main;
+        cursor: pointer;
+        transform: scale(1.04);
+        -webkit-transform: scale(1.04);
+        -moz-transform: scale(1.04);
+        -ms-transform: scale(1.04);
+        -o-transform: scale(1.04);
+    }
+
+    &:active{
+        background-color: $dark;
+        color: $light-main;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+    }
+}

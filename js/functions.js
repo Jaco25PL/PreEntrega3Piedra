@@ -128,7 +128,7 @@ function renderBagProducts(){
 
         showBag.innerHTML = render;
     }else if(showBag){
-        showBag.className = "bag__element-name";
+        showBag.className = "bag__element-name bag__element-empty";
         showBag.innerText = "Tu carrito está vacio :(";
         bagAmountCont.className = "none";   
     }
