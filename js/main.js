@@ -1,7 +1,5 @@
-setProducts();
 
 // HOME
-const store = getProducts();
 const productsCont = document.querySelector("#productsCont");
 const categoryBtn = document.querySelectorAll(".category__items");
 const catTitle = document.querySelector("#categoryTitle");
@@ -25,8 +23,7 @@ const alertUserName = document.querySelector("#alertUserName");
 const userTel = document.querySelector("#formUserTel");
 const alertUserTel = document.querySelector("#alertUserTel");
 
-
-catProduct(getProducts());
+// catProduct(getProducts());
 selectCategory();
 searchProducts();
 
@@ -35,3 +32,5 @@ renderBagProducts();
 
 userChange();
 scrollBottom();
+
+

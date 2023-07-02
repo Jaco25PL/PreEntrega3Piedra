@@ -1,7 +1,17 @@
+let store = [];
+
+fetch("./js/store.json")
+    .then(response => response.json())
+    .then(data => {
+        store  = data;
+        setProducts(store);
+    catProduct(getProducts());
+    })
+    
 
 // storage
-function setProducts() {
-    localStorage.setItem("allProducts", JSON.stringify(productsList));
+function setProducts(products) {
+    localStorage.setItem("allProducts", JSON.stringify(products));
 }
 function getProducts() {
     return JSON.parse(localStorage.getItem("allProducts"));
@@ -243,3 +253,5 @@ function scrollBottom() {
 function scrollToBottom() {
     window.scrollTo(0, document.body.scrollHeight);
   }
+
+
