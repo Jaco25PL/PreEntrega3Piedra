@@ -6,10 +6,10 @@
     
 <!-- iconst from bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> 
-
+<!-- toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <!-- styles - link css -->
     <link rel="stylesheet" href="css/main.css">
-    
 <!-- font family cdn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
 
     <title>Carrito | SwiftTECH</title>
 
-    <link rel="icon" href="img/logo.png">
+    <link rel="icon" href="img/logo.svg">
 
 </head>
 <body>
@@ -25,10 +25,7 @@
     <header class="head">
         <div class="head__container">
             <div class="head__item logo"><a href="index.html"><img src="img/logo.png"  class="head__item-img" alt="SwiftTECH"></a></div>
-            <div class="head__item find">
-                <input class="find__input" type="text" placeholder="Se Desbloquea en el Proyecto Final">
-                <button class="head-btn"><i class="find-icon bi bi-search"></i></button>
-            </div>
+            <div class="head__item find"></div>
             <div class="head__cart-regist">
                 <div class="head__item cart"><a href="cart.html" class="cart-icon-cont"><i class="cart-icon bi bi-bag"></i><span class="bag__num" id="bagNum"></span></a></div>
                 <div class="head__item log-btn-cont">
@@ -84,9 +81,10 @@
         </div>
     </footer>
 <!-- link JavaScript -->
-    <script src="js/store.js"></script>
-    <script src="js/functions.js"></script>
-    <script src="js/main.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="js/functions.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/main.js"></script>
 
 
 </body>

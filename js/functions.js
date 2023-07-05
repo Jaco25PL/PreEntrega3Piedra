@@ -1,13 +1,17 @@
-let store = [];
+async function fetchData() {
+    try {
+        const response = await fetch("./js/store.json");
+        const data = await response.json();
 
-fetch("./js/store.json")
-    .then(response => response.json())
-    .then(data => {
-        store  = data;
+        store = data;
         setProducts(store);
-    catProduct(getProducts());
-    })
-    
+        catProduct(getProducts());
+
+    } catch (error) {
+        console.log("This is an error", error);
+    }
+}
+
 
 // storage
 function setProducts(products) {
@@ -24,6 +28,8 @@ function getProductsBag() {
     return JSON.parse(localStorage.getItem("allBagProducts")) || [];
 }
 
+
+
 // add to bag
 function updateAddBtn(){
     addBtn = document.querySelectorAll(".btn-addBag");
@@ -34,6 +40,24 @@ function updateAddBtn(){
 }
 
 function addProductBag(e) {
+    Toastify({
+        text: "Producto agregado",
+        duration: 3000,
+        destination: "cart.html",
+        newWindow: false,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right,#8a2be2, #ae51b8)",
+            borderRadius: "1rem",
+        },
+        offset: {
+            x: "26%",
+            y: "1.5rem"
+        },
+    }).showToast();
 
     let id = parseInt(e.currentTarget.id);
     const find = store.find(item => item.id === id);
@@ -48,8 +72,6 @@ function addProductBag(e) {
     bagNumber();
     setProductsBag(getBag);
 }
-
-
 
 // renderizar categorias y productos 
 function catProduct(category) {
@@ -82,16 +104,13 @@ function catProduct(category) {
     updateAddBtn();
 }
 
-function filterStore(type) {
-    return store.filter(item => item.type === type);
-}   
-
 //  navegar entre categorias
 function selectCategory(){
     categoryBtn.forEach(element => {
         element.addEventListener("click", () => {
     
-            const selectedtCat = filterStore(element.id);
+            const selectedtCat = store.filter(item => item.type === element.id);
+
             catProduct(selectedtCat);
 
             catTitle.innerHTML = element.id;
@@ -109,13 +128,35 @@ function bagNumber(){
 function searchProducts(){
 
     if(findInput){
+        let value;
         findInput.addEventListener("input", () => {
-            let value = findInput.value.toUpperCase();
-            const filter = store.includes()
+            value = findInput.value.toLowerCase();
+        })
+        searchBtn.addEventListener("click", () => {
+            const result = store.filter(item => item.brand.toLowerCase().startsWith(value));
+            if(result.length > 0){
+                catProduct(result);
+            }else{
+                Toastify({
+                    text: "Producto no encontrado",
+                    duration: 2000,
+                    newWindow: false,
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
+                    style: {
+                        background: "linear-gradient(to right,#8a2be2, #ae51b8)",
+                        borderRadius: "1rem",
+                    },
+                    offset: {
+                        x: "26%",
+                        y: "1.5rem"
+                    },
+                }).showToast();
+            }
         })
     }
 }
-
 
 
 // CARRITO PAGINA
@@ -145,16 +186,32 @@ function renderBagProducts(){
     removeBagItem();
 }
 
+// remove item
 function removeBagItem(){
     btnRemove = document.querySelectorAll(".btn-remove");
-    
     btnRemove.forEach(item => {
         item.addEventListener("click", removeItem);
-    })
+})                                                  
 }
 
-// remove item
 function removeItem(e){
+    Toastify({
+        text: "Producto eliminado",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right,#ca2d4f, #ae51b8)",
+            borderRadius: "1rem",
+        },
+        offset: {
+            x: "26%",
+            y: "1.5rem"
+        },
+    }).showToast();
+
     let id = parseInt(e.currentTarget.id);
     const index = getBag.findIndex(product => product.id == id);
     getBag.splice(index, 1);
@@ -185,9 +242,22 @@ function checkOut(){
         total();
         renderBagProducts();
         showBag.innerText = "Gracias por tu compra! :)";
-        
+        Swal.fire({
+            title: "Gracias por elegirnos!",
+            icon: "success",
+        })
     }else{
-        console.log("meter un coso de esos como sweet alert");
+        Swal.fire({
+            title: "<strong>Nuevo Aquí?</u></strong>",
+            icon: "info",
+            html:"Para ir a pagar debes registrarte",
+            showCloseButton: true,
+            focusConfirm: false,
+            confirmButtonText:"Ok!"
+        }).then(value => {
+            if (value) {
+                window.scrollTo(0, document.body.scrollHeight);
+            }})
     }
 }
 
@@ -226,19 +296,14 @@ function userChange(){
     if(info){
         userLogBtn.innerHTML = info;
         userLogBtn.classList.add("log-btn-user");
+        logOut.classList.remove("none");
 
         sendForm.innerText = "Nuevo Usuario";
     }else{
         userLogBtn.innerHTML = "Registrarme";
-    }
-
-    if(info){
-        logOut.classList.remove("none");
-    }else{
         logOut.className = "none";
     }
 }
-
 
 logOutBtn.addEventListener("click", userLogOut);
 function userLogOut() {
@@ -252,6 +317,11 @@ function scrollBottom() {
 
 function scrollToBottom() {
     window.scrollTo(0, document.body.scrollHeight);
+    userName.focus();
   }
+
+
+
+
 
 
