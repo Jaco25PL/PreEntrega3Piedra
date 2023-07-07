@@ -1,17 +1,15 @@
 // HOME
 let store;
-
+let currency;
 const productsCont = document.querySelector("#productsCont");
 const categoryBtn = document.querySelectorAll(".category__items");
 const catTitle = document.querySelector("#categoryTitle");
 const logOut = document.querySelector(".log-out-cont");
 const logOutBtn = document.querySelector(".log-out-btn");
-
-const findInput = document.querySelector("#searchInput");
+const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchBtn");
 // BAG
 const getBag = getProductsBag();
-let btnRemove = document.querySelectorAll(".btn-remove");
 const showBag = document.querySelector("#showBag");
 const bagAmount = document.querySelector("#totalAmount");
 const bagAmountCont = document.querySelector("#bagAmountCont");
@@ -27,7 +25,7 @@ const userLogBtn = document.querySelector(".log-btn");
 fetchData();
 selectCategory();
 searchProducts();
-
+userLogOut();
 
 total();
 renderBagProducts();

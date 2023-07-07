@@ -1,11 +1,22 @@
+
 async function fetchData() {
     try {
-        const response = await fetch("./js/store.json");
-        const data = await response.json();
-
-        store = data;
+        const respStore = await fetch("./js/store.json");
+        const dataStore = await respStore.json();
+        store = dataStore;
         setProducts(store);
         catProduct(getProducts());
+        
+        const respCurrency = await fetch("https://currency-exchange.p.rapidapi.com/exchange?to=UYU&from=USD&q=1.0",
+        {
+        headers: {
+            "X-RapidAPI-Key": "9652870f74mshb8eaa011e895897p16ecc7jsn4a254c9aaf4c",
+            "X-RapidAPI-Host": "currency-exchange.p.rapidapi.com"
+        }})
+        const resultCurrency = await respCurrency.json();
+        currency = resultCurrency
+        convertCurrency(currency)
+        
 
     } catch (error) {
         console.log("This is an error", error);
@@ -26,6 +37,46 @@ function setProductsBag(item) {
 }
 function getProductsBag() {
     return JSON.parse(localStorage.getItem("allBagProducts")) || [];
+}
+
+
+function currencyBtn(){
+
+
+
+}
+
+currencyBtn()
+
+function convertCurrency(currency){
+    const usdBtn = document.querySelector("#toUsd");
+    const uyuBtn = document.querySelector("#toUyu");
+
+    usdBtn.addEventListener("click", () => {
+        const convert = getProducts().map((product) => {
+            return {
+                ...product,
+                price: Math.round(product.price / currency)
+            }
+        })
+        usdBtn.disabled = true;
+        uyuBtn.disabled = false;
+        setProducts(convert);
+        catProduct(getProducts());
+    });
+
+    uyuBtn.addEventListener("click", () => {
+        const convert = getProducts().map((product) => {
+            return {
+                ...product,
+                price: Math.round(product.price * currency)
+            }
+        })
+        uyuBtn.disabled = true;
+        usdBtn.disabled = false;
+        setProducts(convert);
+        catProduct(getProducts());
+    });
 }
 
 
@@ -60,7 +111,7 @@ function addProductBag(e) {
     }).showToast();
 
     let id = parseInt(e.currentTarget.id);
-    const find = store.find(item => item.id === id);
+    const find = getProducts().find(item => item.id === id);
 
     if(getBag.some(product => product.id === id)){
         const index = getBag.findIndex(product => product.id === id);
@@ -73,9 +124,8 @@ function addProductBag(e) {
     setProductsBag(getBag);
 }
 
-// renderizar categorias y productos 
+// render products
 function catProduct(category) {
-    
     if(productsCont){    
         let render = "";
         category.forEach(item => {
@@ -109,17 +159,15 @@ function selectCategory(){
     categoryBtn.forEach(element => {
         element.addEventListener("click", () => {
     
-            const selectedtCat = store.filter(item => item.type === element.id);
-
+            const selectedtCat = getProducts().filter(item => item.type === element.id);
             catProduct(selectedtCat);
-
             catTitle.innerHTML = element.id;
         })
     })
 }
 
 function bagNumber(){
-    let bagNum = document.querySelector("#bagNum");
+    const bagNum = document.querySelector("#bagNum");
     let newNumber = getBag.reduce((acc, product) => acc + product.cantidad, 0);
     bagNum.innerHTML = newNumber;
 }
@@ -127,13 +175,19 @@ function bagNumber(){
 // SEARCH PRODUCTS
 function searchProducts(){
 
-    if(findInput){
+    if(searchInput){
         let value;
-        findInput.addEventListener("input", () => {
-            value = findInput.value.toLowerCase();
+        searchInput.addEventListener("input", () => {
+            value = searchInput.value.toLowerCase();
         })
         searchBtn.addEventListener("click", () => {
-            const result = store.filter(item => item.brand.toLowerCase().startsWith(value));
+            const result = getProducts().filter((item) => {
+                return (
+                    item.brand.toLowerCase().includes(value) ||
+                    item.model.toLowerCase().includes(value)
+                );
+                
+            })
             if(result.length > 0){
                 catProduct(result);
             }else{
@@ -144,8 +198,8 @@ function searchProducts(){
                     gravity: "top",
                     position: "right",
                     stopOnFocus: true,
-                    style: {
-                        background: "linear-gradient(to right,#8a2be2, #ae51b8)",
+                    style: {    
+                        background: "linear-gradient(to right,#ca2d4f, #ae51b8)",
                         borderRadius: "1rem",
                     },
                     offset: {
@@ -159,11 +213,9 @@ function searchProducts(){
 }
 
 
-// CARRITO PAGINA
-
+// CARRITO 
 function renderBagProducts(){
     let render = "";
-
     if((showBag) && (getBag.length > 0)){
 
         getBag.forEach(product => {
@@ -176,7 +228,6 @@ function renderBagProducts(){
                 <button class="btn btn-remove" type="button" id="${product.id}">Remover del Carrito</button>
             </div>`
         });
-
         showBag.innerHTML = render;
     }else if(showBag){
         showBag.className = "bag__element-name bag__element-empty";
@@ -184,14 +235,15 @@ function renderBagProducts(){
         bagAmountCont.className = "none";   
     }
     removeBagItem();
+    checkOutBtn();
 }
 
 // remove item
 function removeBagItem(){
-    btnRemove = document.querySelectorAll(".btn-remove");
+    const btnRemove = document.querySelectorAll(".btn-remove");
     btnRemove.forEach(item => {
         item.addEventListener("click", removeItem);
-})                                                  
+    })                                                  
 }
 
 function removeItem(e){
@@ -221,7 +273,6 @@ function removeItem(e){
     total();
 }
 
-
 function total() {
     if(bagAmount){
         let totalAmount = 0;
@@ -229,10 +280,16 @@ function total() {
         getBag.forEach(item => {
         totalAmount += item.price * item.cantidad;
     });
-
-    bagAmount.innerHTML = `<b>$${totalAmount}</b> `;}
+        bagAmount.innerHTML = `<b>$${totalAmount}</b> `;
+    }
 }
 
+function checkOutBtn(){
+    const checkBtn = document.querySelector("#checkBtn");
+    if(checkBtn){
+        checkBtn.addEventListener("click", checkOut);
+    }
+}
 function checkOut(){
     let userInfo = getUserInfo();
     
@@ -247,14 +304,8 @@ function checkOut(){
             icon: "success",
         })
     }else{
-        Swal.fire({
-            title: "<strong>Nuevo Aquí?</u></strong>",
-            icon: "info",
-            html:"Para ir a pagar debes registrarte",
-            showCloseButton: true,
-            focusConfirm: false,
-            confirmButtonText:"Ok!"
-        }).then(value => {
+        Swal.fire({title: "<strong>Nuevo Aquí?</u></strong>",icon: "info",html:"Para ir a pagar debes registrarte",showCloseButton: true,focusConfirm: false,confirmButtonText:"Ok!"})
+        .then(value => {
             if (value) {
                 window.scrollTo(0, document.body.scrollHeight);
             }})
@@ -305,21 +356,19 @@ function userChange(){
     }
 }
 
-logOutBtn.addEventListener("click", userLogOut);
-function userLogOut() {
-    sessionStorage.clear();
-    location.reload();
+function userLogOut(){
+    logOutBtn.addEventListener("click", () => {
+        sessionStorage.clear();
+        location.reload();
+    });
 }
 
 function scrollBottom() {
-    userLogBtn.addEventListener("click", scrollToBottom);
+    userLogBtn.addEventListener("click", () => {
+        window.scrollTo(0, document.body.scrollHeight);
+        userName.focus();
+    });
 }
-
-function scrollToBottom() {
-    window.scrollTo(0, document.body.scrollHeight);
-    userName.focus();
-  }
-
 
 
 
