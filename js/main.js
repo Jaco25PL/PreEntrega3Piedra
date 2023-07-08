@@ -32,3 +32,5 @@ renderBagProducts();
 
 userChange();
 scrollBottom();
+
+

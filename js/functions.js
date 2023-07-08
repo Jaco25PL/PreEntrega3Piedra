@@ -4,9 +4,13 @@ async function fetchData() {
         const respStore = await fetch("./js/store.json");
         const dataStore = await respStore.json();
         store = dataStore;
-        setProducts(store);
-        catProduct(getProducts());
-        
+        if (!getProducts()) {
+            setProducts(store);
+            catProduct(getProducts());
+        }else{
+            catProduct(getProducts());
+        }
+
         const respCurrency = await fetch("https://currency-exchange.p.rapidapi.com/exchange?to=UYU&from=USD&q=1.0",
         {
         headers: {
@@ -14,14 +18,17 @@ async function fetchData() {
             "X-RapidAPI-Host": "currency-exchange.p.rapidapi.com"
         }})
         const resultCurrency = await respCurrency.json();
-        currency = resultCurrency
-        convertCurrency(currency)
+        currency = resultCurrency;
         
+        convertCurrency(currency);
+
+                
 
     } catch (error) {
         console.log("This is an error", error);
     }
 }
+
 
 
 // storage
@@ -40,46 +47,59 @@ function getProductsBag() {
 }
 
 
-function currencyBtn(){
-
-
-
-}
-
-currencyBtn()
-
 function convertCurrency(currency){
     const usdBtn = document.querySelector("#toUsd");
     const uyuBtn = document.querySelector("#toUyu");
 
-    usdBtn.addEventListener("click", () => {
-        const convert = getProducts().map((product) => {
-            return {
-                ...product,
-                price: Math.round(product.price / currency)
-            }
-        })
-        usdBtn.disabled = true;
-        uyuBtn.disabled = false;
-        setProducts(convert);
-        catProduct(getProducts());
-    });
+    if(usdBtn && uyuBtn){
+        usdBtn.addEventListener("click", () => {
+            handleCurrencyCode(currency, "USD", usdBtn, uyuBtn);
+            handleBag();
+        });
 
-    uyuBtn.addEventListener("click", () => {
-        const convert = getProducts().map((product) => {
-            return {
-                ...product,
-                price: Math.round(product.price * currency)
-            }
-        })
-        uyuBtn.disabled = true;
-        usdBtn.disabled = false;
-        setProducts(convert);
-        catProduct(getProducts());
-    });
+        uyuBtn.addEventListener("click", () => {
+            handleCurrencyCode(currency, "UYU", uyuBtn, usdBtn);
+            handleBag();
+        });
+
+        function handleCurrencyCode(currency, targetCurrencyCode, fromBtn, targetBtn) {
+            const convert = getProducts().map((product) => {
+                const price = targetCurrencyCode === "USD" ?
+                    Math.round(product.price / currency) :
+                    Math.round(product.price * currency);
+            
+                return {
+                    ...product,
+                    price,
+                    currencyCode: targetCurrencyCode
+                };
+            });
+            fromBtn.disabled = true;
+            targetBtn.disabled = false;
+
+            setProducts(convert);
+            catProduct(getProducts());
+        }
+
+        function handleBag() {
+            console.log("entro");
+            // const convert = getProductsBag().map((product) => {
+            //     const price = targetCurrencyCode === "USD" ?
+            //         Math.round(product.price / currency) :
+            //         Math.round(product.price * currency);
+            
+            //     return {
+            //         ...product,
+            //         price,
+            //         currencyCode: targetCurrencyCode
+            //     };
+            // });
+
+            // setProductsBag(convert);
+            // renderBagProducts();
+        }
+    }
 }
-
-
 
 // add to bag
 function updateAddBtn(){
@@ -129,7 +149,6 @@ function catProduct(category) {
     if(productsCont){    
         let render = "";
         category.forEach(item => {
-
             render += `
                 <div class="product">
                     <div class="product__img-cont">
@@ -139,7 +158,7 @@ function catProduct(category) {
                         <p><b>${item.brand}</b> ${item.model}</p>
                         <div class="product__price">
                             <p>$${item.price}</p>
-                            <span>USD</span>
+                            <span>${item.currencyCode}</span>
                         </div>
                         <button id="${item.id}" type="button" class="btn btn-addBag">Add to Cart</button>
                     </div>
@@ -224,7 +243,7 @@ function renderBagProducts(){
                 <img class="bag__element-img" src="${product.img}" alt="${product.brand}}">
                 <div class="bag__element-name"><p>${product.brand} ${product.model}</p></div>
                 <div class="bag__element-name"><p>Cantidad: ${product.cantidad}</p></div>
-                <div class="bag__element-price"><p>$${product.price}</p><span>USD</span></div>
+                <div class="bag__element-price"><p>$${product.price}</p><span>${product.currencyCode}</span></div>
                 <button class="btn btn-remove" type="button" id="${product.id}">Remover del Carrito</button>
             </div>`
         });

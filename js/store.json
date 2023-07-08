@@ -5,7 +5,8 @@
         "type": "Phone",
         "brand":"Apple",
         "model": "iPhone 14 Pro",
-        "price": 1720
+        "price": 1720,
+        "currencyCode": "USD"
     },
     {   
         "id": 29,
@@ -13,7 +14,8 @@
         "type": "Phone",
         "brand":"Apple",
         "model": "iPhone 14 Pro Max",
-        "price": 1884
+        "price": 1884,
+        "currencyCode": "USD"
     },
     {   
         "id": 3,
@@ -21,7 +23,8 @@
         "type": "Phone",
         "brand":"Samsung",
         "model": "Galaxy S23",
-        "price": 1049
+        "price": 1049,
+        "currencyCode": "USD"
     },
     {   
         "id": 27,
@@ -29,7 +32,8 @@
         "type": "Phone",
         "brand":"Samsung",
         "model": "Galaxy S23 Ultra",
-        "price": 1819
+        "price": 1819,
+        "currencyCode": "USD"
     },
     {   
         "id": 28,
@@ -37,7 +41,8 @@
         "type": "Phone",
         "brand": "Apple",
         "model": "iPhone SE (3ª Gen)",
-        "price": 775
+        "price": 775,
+        "currencyCode": "USD"
     },
     {   
         "id": 30,
@@ -45,7 +50,8 @@
         "type": "Phone",
         "brand": "Apple",
         "model": "iPhone 11",
-        "price": 767
+        "price": 767,
+        "currencyCode": "USD"
     },
     {   
         "id": 4,
@@ -53,7 +59,8 @@
         "type": "Phone",
         "brand":"Samsung",
         "model": "Galaxy A14",
-        "price": 259
+        "price": 259,
+        "currencyCode": "USD"
     },
     {   
         "id": 33,
@@ -61,7 +68,8 @@
         "type": "Phone",
         "brand":"Samsung",
         "model": "Galaxy A34",
-        "price": 347
+        "price": 347,
+        "currencyCode": "USD"
     },
     {   
         "id": 5,
@@ -69,7 +77,8 @@
         "type": "Phone",
         "brand":"Motorola",
         "model": "Moto G72",
-        "price": 375
+        "price": 375,
+        "currencyCode": "USD"
     },
     {   
         "id": 6,
@@ -77,7 +86,8 @@
         "type": "Phone",
         "brand":"Xiaomi",
         "model": "12 Pro",
-        "price": 499
+        "price": 499,
+        "currencyCode": "USD"
     },
     {   
         "id": 31,
@@ -85,7 +95,8 @@
         "type": "Phone",
         "brand":"Motorola",
         "model": "Moto E32",
-        "price": 159
+        "price": 159,
+        "currencyCode": "USD"
     },
     {   
         "id": 32,
@@ -93,70 +104,80 @@
         "type": "Phone",
         "brand":"Motorola",
         "model": "EDGE 30",
-        "price": 593
+        "price": 593,
+        "currencyCode": "USD"
     },
     {   
         "id": 7,
         "img": "https://f.fcdn.app/imgs/4ee267/artcomputer.com.uy/artcuy/bb95/original/catalogo/AW845SG_AW845SG_1/2000-2000/apple-watch-series-8-45mm-midnight-apple-watch-series-8-45mm-midnight.jpg",
         "type": "Smart Watch","brand": "Apple",
         "model": "Series 8",
-        "price": 559
+        "price": 559,
+        "currencyCode": "USD"
     },
     {   
         "id": 8,
         "img": "https://m.media-amazon.com/images/I/71-bUn+jA1L.jpg",
         "type": "Smart Watch","brand": "Samsing",
         "model": "Galaxy Watch 4",
-        "price": 390
+        "price": 390,
+        "currencyCode": "USD"
     },
     {   
         "id": 9,
         "img": "https://cdn.shopify.com/s/files/1/0271/8302/2166/products/GT3-Runner-Black-Left.jpg?v=1681265050",
         "type": "Smart Watch","brand": "Huawei",
         "model": "Gt Runner",
-        "price": 259
+        "price": 259,
+        "currencyCode": "USD"
     },
     {   
         "id": 10,
         "img": "https://tatauy.vtexassets.com/arquivos/ids/284249-800-800?v=637789790016800000&width=800&height=800&aspect=true",
         "type": "Smart Watch","brand": "Xiaomi",
         "model": "Amazfit Gt",
-        "price": 129
+        "price": 129,
+        "currencyCode": "USD"
     },
     {   
         "id": 11,
         "img": "https://cdn.awsli.com.br/1718/1718332/produto/175646085/07-thawmb.jpg",
         "type": "Smart Watch","brand": "Smart-Watch",
         "model": "W28 Pro Serie 8",
-        "price": 84
+        "price": 84,
+        "currencyCode": "USD"
     },
     {   
         "id": 34,
         "img": "https://d391ci4kxgasl8.cloudfront.net/fit-in/524x480/filters:fill(FFFFFF):quality(90):format(webp)/_img_productos/moto-watch-100-foto1.jpg",
         "type": "Smart Watch","brand": "Motorola",
         "model": "Moto Watch 100",
-        "price": 134
+        "price": 134,
+        "currencyCode": "USD"
     },
     {   
         "id": 12,
         "img": "https://i5.walmartimages.com.mx/mg/gm/1p/images/product-images/img_large/00071171954889l.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
         "type": "Game Console","brand": "Play Station",
         "model": "5",
-        "price": 808
+        "price": 808,
+        "currencyCode": "USD"
     },
     {   
         "id": 13,
         "img": "https://m.media-amazon.com/images/I/51ojzJk77qL.jpg",
         "type": "Game Console","brand": "xBox",
         "model": "Series X",
-        "price": 600
+        "price": 600,
+        "currencyCode": "USD"
     },
     {   
         "id": 14,
         "img": "https://m.media-amazon.com/images/I/71UiJ0O6vTL.jpg",
         "type": "Game Console","brand": "Nintendo Switch",
         "model": "Deluxe",
-        "price": 699
+        "price": 699,
+        "currencyCode": "USD"
     },
     {   
         "id": 15,
@@ -164,7 +185,8 @@
         "type": "Laptop",
         "brand": "Apple",
         "model": "MacBook Pro",
-        "price": 2899
+        "price": 2899,
+        "currencyCode": "USD"
     },
     {   
         "id": 16,
@@ -172,7 +194,8 @@
         "type": "Laptop",
         "brand": "Apple",
         "model": "MacBook Air M2",
-        "price": 1829
+        "price": 1829,
+        "currencyCode": "USD"
     },
     {   
         "id": 17,
@@ -180,7 +203,8 @@
         "type": "Laptop",
         "brand": "ASUS",
         "model": "X515EA",
-        "price": 599
+        "price": 599,
+        "currencyCode": "USD"
     },
     {   
         "id": 35,
@@ -188,7 +212,8 @@
         "type": "Laptop",
         "brand": "ASUS",
         "model": "Zenbook Duo 14",
-        "price": 2399
+        "price": 2399,
+        "currencyCode": "USD"
     },
     {   
         "id": 36,
@@ -196,7 +221,8 @@
         "type": "Laptop",
         "brand": "ASUS",
         "model": "M415DA",
-        "price": 725
+        "price": 725,
+        "currencyCode": "USD"
     },
     {   
         "id": 18,
@@ -204,7 +230,8 @@
         "type": "Laptop",
         "brand": "Dell",
         "model": "Vostro 3501",
-        "price": 568
+        "price": 568,
+        "currencyCode": "USD"
     },
     {   
         "id": 19,
@@ -212,7 +239,8 @@
         "type": "Laptop",
         "brand": "Lenovo",
         "model": "typeealPad",
-        "price": 299
+        "price": 299,
+        "currencyCode": "USD"
     },
     {   
         "id": 20,
@@ -220,7 +248,8 @@
         "type": "Laptop",
         "brand": "Lenovo",
         "model": "N23 Celeron",
-        "price": 210
+        "price": 210,
+        "currencyCode": "USD"
     },
     {   
         "id": 21,
@@ -228,7 +257,8 @@
         "type": "Music",
         "brand": "Apple",
         "model": "AirPods Max",
-        "price": 815
+        "price": 815,
+        "currencyCode": "USD"
     },
     {   
         "id": 22,
@@ -236,7 +266,8 @@
         "type": "Music",
         "brand": "Apple",
         "model": "AirPods 3ª Gen",
-        "price": 339
+        "price": 339,
+        "currencyCode": "USD"
     },
     {   
         "id": 23,
@@ -244,7 +275,8 @@
         "type": "Music",
         "brand": "Sony",
         "model": "WH-H900N",
-        "price": 476
+        "price": 476,
+        "currencyCode": "USD"
     },
     {   
         "id": 24,
@@ -252,7 +284,8 @@
         "type": "Music",
         "brand": "Sony",
         "model": "WH-XB910N",
-        "price": 239
+        "price": 239,
+        "currencyCode": "USD"
     },
     {   
         "id": 25,
@@ -260,7 +293,8 @@
         "type": "Music",
         "brand": "JBL",
         "model": "Tune 115TWS",
-        "price": 89
+        "price": 89,
+        "currencyCode": "USD"
     },
     {   
         "id": 26,
@@ -268,6 +302,7 @@
         "type": "Music",
         "brand": "JBL",
         "model": "Tune 500",
-        "price": 33
+        "price": 33,
+        "currencyCode": "USD"
     }
 ]
