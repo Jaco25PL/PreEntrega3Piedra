@@ -8,12 +8,16 @@ async function fetchData() {
             setProducts(store);
             catProduct(getProducts());
         }else{
+            if(usdBtn && uyuBtn){
+                const currencyBtnStats = getProducts().some(code => code.currencyCode === "USD")
+                usdBtn.disabled = currencyBtnStats ? true : false;
+                uyuBtn.disabled = currencyBtnStats ? false : true;
+            }
             catProduct(getProducts());
         }
 
         const respCurrency = await fetch("https://currency-exchange.p.rapidapi.com/exchange?to=UYU&from=USD&q=1.0",
-        {
-        headers: {
+        {headers: {
             "X-RapidAPI-Key": "9652870f74mshb8eaa011e895897p16ecc7jsn4a254c9aaf4c",
             "X-RapidAPI-Host": "currency-exchange.p.rapidapi.com"
         }})
@@ -22,14 +26,16 @@ async function fetchData() {
         
         convertCurrency(currency);
 
-                
-
     } catch (error) {
-        console.log("This is an error", error);
+        console.error(error)
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Parece que algo anda mal...",
+            footer: `<span>${error}</span>`
+        })
     }
 }
-
-
 
 // storage
 function setProducts(products) {
@@ -48,22 +54,20 @@ function getProductsBag() {
 
 
 function convertCurrency(currency){
-    const usdBtn = document.querySelector("#toUsd");
-    const uyuBtn = document.querySelector("#toUyu");
 
     if(usdBtn && uyuBtn){
         usdBtn.addEventListener("click", () => {
             handleCurrencyCode(currency, "USD", usdBtn, uyuBtn);
-            handleBag();
+            handleBag("USD");
         });
 
         uyuBtn.addEventListener("click", () => {
             handleCurrencyCode(currency, "UYU", uyuBtn, usdBtn);
-            handleBag();
+            handleBag("UYU");
         });
 
         function handleCurrencyCode(currency, targetCurrencyCode, fromBtn, targetBtn) {
-            const convert = getProducts().map((product) => {
+            const convert = getProducts().map(product => {
                 const price = targetCurrencyCode === "USD" ?
                     Math.round(product.price / currency) :
                     Math.round(product.price * currency);
@@ -81,22 +85,20 @@ function convertCurrency(currency){
             catProduct(getProducts());
         }
 
-        function handleBag() {
-            console.log("entro");
-            // const convert = getProductsBag().map((product) => {
-            //     const price = targetCurrencyCode === "USD" ?
-            //         Math.round(product.price / currency) :
-            //         Math.round(product.price * currency);
+        function handleBag(targetCurrencyCode) {
+            const convert = getProductsBag().map(product => {
+                const price = targetCurrencyCode === "USD" ?
+                    Math.round(product.price / currency) :
+                    Math.round(product.price * currency);
             
-            //     return {
-            //         ...product,
-            //         price,
-            //         currencyCode: targetCurrencyCode
-            //     };
-            // });
-
-            // setProductsBag(convert);
-            // renderBagProducts();
+                return {
+                    ...product,
+                    price,
+                    currencyCode: targetCurrencyCode
+                };
+            });
+            setProductsBag(convert);
+            renderBagProducts();
         }
     }
 }

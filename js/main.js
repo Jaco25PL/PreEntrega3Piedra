@@ -8,6 +8,9 @@ const logOut = document.querySelector(".log-out-cont");
 const logOutBtn = document.querySelector(".log-out-btn");
 const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchBtn");
+
+const usdBtn = document.querySelector("#toUsd");
+const uyuBtn = document.querySelector("#toUyu");
 // BAG
 const getBag = getProductsBag();
 const showBag = document.querySelector("#showBag");
