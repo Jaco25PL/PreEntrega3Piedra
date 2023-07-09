@@ -10,9 +10,7 @@ const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchBtn");
 const usdBtn = document.querySelector("#toUsd");
 const uyuBtn = document.querySelector("#toUyu");
-
 const goCart = document.querySelector("#goCart");
-
 // BAG
 const getBag = getProductsBag();
 const showBag = document.querySelector("#showBag");

@@ -57,12 +57,10 @@ function convertCurrency(currency){
     if(usdBtn && uyuBtn){
         usdBtn.addEventListener("click", () => {
             handleCurrencyCode(currency, "USD", usdBtn, uyuBtn);
-            // handleBagCode("USD");
         });
 
         uyuBtn.addEventListener("click", () => {
             handleCurrencyCode(currency, "UYU", uyuBtn, usdBtn);
-            // handleBagCode("UYU");
         });
 
         function handleCurrencyCode(currency, targetCurrencyCode, fromBtn, targetBtn) {
@@ -83,23 +81,6 @@ function convertCurrency(currency){
             setProducts(convert);
             catProduct(getProducts());
         }
-
-        // function handleBagCode(targetCurrencyCode) {
-        //     const convert = getProductsBag().map(product => {
-        //         const price = targetCurrencyCode === "USD" ?
-        //             Math.round(product.price / currency) :
-        //             Math.round(product.price * currency);
-            
-        //         return {
-        //             ...product,
-        //             price,
-        //             currencyCode: targetCurrencyCode
-        //         };
-        //     });
-
-        //     setProductsBag(convert);
-        //     renderBagProducts();
-        // }
     }
 }
 
@@ -114,9 +95,9 @@ function updateAddBtn(){
 
 function addProductBag(e) {
     Toastify({
-        text: "Producto agregado",duration: 3000,newWindow: false,close: true,gravity: "top",position: "right",stopOnFocus: true,
+        text: "Producto agregado",duration: 2000,newWindow: false,close: true,gravity: "top",position: "right",stopOnFocus: true,
         style: {background: "linear-gradient(to right,#8a2be2, #ae51b8)",borderRadius: "1rem",},
-        offset: {x: "26%",y: "1.5rem"},
+        offset: {x: "26%",y: "5rem"},
     }).showToast();
 
     let id = parseInt(e.currentTarget.id);
@@ -206,7 +187,7 @@ function searchProducts(){
             }else{
                 Toastify({text: "Producto no encontrado",duration: 2000,newWindow: false,gravity: "top",position: "right",stopOnFocus: true,
                     style: {background: "linear-gradient(to right,#ca2d4f, #ae51b8)",borderRadius: "1rem",},
-                    offset: {x: "26%",y: "1.5rem"},
+                    offset: {x: "26%",y: "5rem"},
                 }).showToast();
             }
         })
@@ -250,7 +231,7 @@ function removeBagItem(){
 function removeItem(e){
     Toastify({text: "Producto eliminado",duration: 3000,close: true,gravity: "top",position: "right",stopOnFocus: true,
     style: {background: "linear-gradient(to right,#ca2d4f, #ae51b8)",borderRadius: "1rem",},
-        offset: {x: "26%",y: "1.5rem"},
+        offset: {x: "26%",y: "5rem"},
     }).showToast();
 
     let id = parseInt(e.currentTarget.id);
@@ -325,7 +306,6 @@ function valForm() {
     }else{
         alertUserTel.innerText = "";
     }
-    
     setUserInfo(userName.value);    
     form.submit();  
 }
@@ -368,7 +348,6 @@ function goToCart() {
             if(productCode){
 
                     getBag.forEach(item => {
-
                         if(item.currencyCode === "USD"){
                             item.price = Math.round(item.price * currency);
                             item.currencyCode = "UYU";
@@ -379,7 +358,6 @@ function goToCart() {
                     setProductsBag(getBag);
             }else{
                     getBag.forEach(item => {
-
                         if(item.currencyCode === "UYU"){
                             item.price = Math.round(item.price / currency);
                             item.currencyCode = "USD";

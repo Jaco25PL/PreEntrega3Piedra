@@ -59,6 +59,24 @@ body {
   -o-transform: scale(1);
 }
 
+.spinner {
+  width: 100%;
+  height: 7rem;
+  display: none;
+  justify-content: center;
+}
+.spinner__item {
+  height: 100%;
+  width: 7rem;
+  outline: 1rem solid #8a2be2;
+  border-radius: 50%;
+  border-bottom: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
 .head {
   padding: 2rem 1rem;
   position: sticky;
