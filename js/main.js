@@ -8,9 +8,11 @@ const logOut = document.querySelector(".log-out-cont");
 const logOutBtn = document.querySelector(".log-out-btn");
 const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchBtn");
-
 const usdBtn = document.querySelector("#toUsd");
 const uyuBtn = document.querySelector("#toUyu");
+
+const goCart = document.querySelector("#goCart");
+
 // BAG
 const getBag = getProductsBag();
 const showBag = document.querySelector("#showBag");
@@ -29,6 +31,7 @@ fetchData();
 selectCategory();
 searchProducts();
 userLogOut();
+goToCart();
 
 total();
 renderBagProducts();

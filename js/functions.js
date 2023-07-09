@@ -6,15 +6,14 @@ async function fetchData() {
         store = dataStore;
         if (!getProducts()) {
             setProducts(store);
-            catProduct(getProducts());
         }else{
             if(usdBtn && uyuBtn){
                 const currencyBtnStats = getProducts().some(code => code.currencyCode === "USD")
                 usdBtn.disabled = currencyBtnStats ? true : false;
                 uyuBtn.disabled = currencyBtnStats ? false : true;
             }
-            catProduct(getProducts());
         }
+        catProduct(getProducts());
 
         const respCurrency = await fetch("https://currency-exchange.p.rapidapi.com/exchange?to=UYU&from=USD&q=1.0",
         {headers: {
@@ -23,7 +22,7 @@ async function fetchData() {
         }})
         const resultCurrency = await respCurrency.json();
         currency = resultCurrency;
-        
+
         convertCurrency(currency);
 
     } catch (error) {
@@ -58,12 +57,12 @@ function convertCurrency(currency){
     if(usdBtn && uyuBtn){
         usdBtn.addEventListener("click", () => {
             handleCurrencyCode(currency, "USD", usdBtn, uyuBtn);
-            handleBag("USD");
+            // handleBagCode("USD");
         });
 
         uyuBtn.addEventListener("click", () => {
             handleCurrencyCode(currency, "UYU", uyuBtn, usdBtn);
-            handleBag("UYU");
+            // handleBagCode("UYU");
         });
 
         function handleCurrencyCode(currency, targetCurrencyCode, fromBtn, targetBtn) {
@@ -85,21 +84,22 @@ function convertCurrency(currency){
             catProduct(getProducts());
         }
 
-        function handleBag(targetCurrencyCode) {
-            const convert = getProductsBag().map(product => {
-                const price = targetCurrencyCode === "USD" ?
-                    Math.round(product.price / currency) :
-                    Math.round(product.price * currency);
+        // function handleBagCode(targetCurrencyCode) {
+        //     const convert = getProductsBag().map(product => {
+        //         const price = targetCurrencyCode === "USD" ?
+        //             Math.round(product.price / currency) :
+        //             Math.round(product.price * currency);
             
-                return {
-                    ...product,
-                    price,
-                    currencyCode: targetCurrencyCode
-                };
-            });
-            setProductsBag(convert);
-            renderBagProducts();
-        }
+        //         return {
+        //             ...product,
+        //             price,
+        //             currencyCode: targetCurrencyCode
+        //         };
+        //     });
+
+        //     setProductsBag(convert);
+        //     renderBagProducts();
+        // }
     }
 }
 
@@ -114,22 +114,9 @@ function updateAddBtn(){
 
 function addProductBag(e) {
     Toastify({
-        text: "Producto agregado",
-        duration: 3000,
-        destination: "cart.html",
-        newWindow: false,
-        close: true,
-        gravity: "top",
-        position: "right",
-        stopOnFocus: true,
-        style: {
-            background: "linear-gradient(to right,#8a2be2, #ae51b8)",
-            borderRadius: "1rem",
-        },
-        offset: {
-            x: "26%",
-            y: "1.5rem"
-        },
+        text: "Producto agregado",duration: 3000,newWindow: false,close: true,gravity: "top",position: "right",stopOnFocus: true,
+        style: {background: "linear-gradient(to right,#8a2be2, #ae51b8)",borderRadius: "1rem",},
+        offset: {x: "26%",y: "1.5rem"},
     }).showToast();
 
     let id = parseInt(e.currentTarget.id);
@@ -140,8 +127,13 @@ function addProductBag(e) {
         getBag[index].cantidad++;
     }else{
         find.cantidad = 1;
+        if(find.currencyCode === "UYU"){
+            find.currencyCode = "USD";
+            find.price = (Math.round(find.price / currency));
+        }
         getBag.push(find);
     }
+
     bagNumber();
     setProductsBag(getBag);
 }
@@ -212,21 +204,9 @@ function searchProducts(){
             if(result.length > 0){
                 catProduct(result);
             }else{
-                Toastify({
-                    text: "Producto no encontrado",
-                    duration: 2000,
-                    newWindow: false,
-                    gravity: "top",
-                    position: "right",
-                    stopOnFocus: true,
-                    style: {    
-                        background: "linear-gradient(to right,#ca2d4f, #ae51b8)",
-                        borderRadius: "1rem",
-                    },
-                    offset: {
-                        x: "26%",
-                        y: "1.5rem"
-                    },
+                Toastify({text: "Producto no encontrado",duration: 2000,newWindow: false,gravity: "top",position: "right",stopOnFocus: true,
+                    style: {background: "linear-gradient(to right,#ca2d4f, #ae51b8)",borderRadius: "1rem",},
+                    offset: {x: "26%",y: "1.5rem"},
                 }).showToast();
             }
         })
@@ -268,21 +248,9 @@ function removeBagItem(){
 }
 
 function removeItem(e){
-    Toastify({
-        text: "Producto eliminado",
-        duration: 3000,
-        close: true,
-        gravity: "top",
-        position: "right",
-        stopOnFocus: true,
-        style: {
-            background: "linear-gradient(to right,#ca2d4f, #ae51b8)",
-            borderRadius: "1rem",
-        },
-        offset: {
-            x: "26%",
-            y: "1.5rem"
-        },
+    Toastify({text: "Producto eliminado",duration: 3000,close: true,gravity: "top",position: "right",stopOnFocus: true,
+    style: {background: "linear-gradient(to right,#ca2d4f, #ae51b8)",borderRadius: "1rem",},
+        offset: {x: "26%",y: "1.5rem"},
     }).showToast();
 
     let id = parseInt(e.currentTarget.id);
@@ -392,6 +360,37 @@ function scrollBottom() {
 }
 
 
+function goToCart() {
+    if(goCart){
+        goCart.addEventListener("click", () => {
 
+            const productCode = getProducts().some(item => item.currencyCode === "UYU");
+            if(productCode){
 
+                    getBag.forEach(item => {
 
+                        if(item.currencyCode === "USD"){
+                            item.price = Math.round(item.price * currency);
+                            item.currencyCode = "UYU";
+                        }else{
+                            console.log(`${item.brnad} is alrady in UYU`);
+                        }
+                    });
+                    setProductsBag(getBag);
+            }else{
+                    getBag.forEach(item => {
+
+                        if(item.currencyCode === "UYU"){
+                            item.price = Math.round(item.price / currency);
+                            item.currencyCode = "USD";
+                        }else{
+                            console.log(`${item.brnad} is alrady in USD`);
+                        }
+                    });
+                    setProductsBag(getBag);
+            }
+            window.location.href = "cart.html";
+        })
+    }
+}
+    
