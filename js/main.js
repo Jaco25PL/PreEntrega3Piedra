@@ -1,6 +1,7 @@
 // HOME
 let store;
 let currency;
+const spinner = document.querySelector("#spinner");
 const productsCont = document.querySelector("#productsCont");
 const categoryBtn = document.querySelectorAll(".category__items");
 const catTitle = document.querySelector("#categoryTitle");
@@ -16,6 +17,7 @@ const getBag = getProductsBag();
 const showBag = document.querySelector("#showBag");
 const bagAmount = document.querySelector("#totalAmount");
 const bagAmountCont = document.querySelector("#bagAmountCont");
+const currencyCodeTotal = document.querySelector("#currencyCodeTotal");
 // FORM
 const form = document.querySelector("#form");
 const sendForm = document.querySelector("#sendForm");

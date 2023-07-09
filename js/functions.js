@@ -1,5 +1,9 @@
 
 async function fetchData() {
+    if(spinner){
+        spinner.style.display = "flex";
+    }
+
     try {
         const respStore = await fetch("./js/store.json");
         const dataStore = await respStore.json();
@@ -14,6 +18,10 @@ async function fetchData() {
             }
         }
         catProduct(getProducts());
+        if(spinner){
+            spinner.style.display = "none";
+        };
+
 
         const respCurrency = await fetch("https://currency-exchange.p.rapidapi.com/exchange?to=UYU&from=USD&q=1.0",
         {headers: {
@@ -24,15 +32,17 @@ async function fetchData() {
         currency = resultCurrency;
 
         convertCurrency(currency);
-
+        
     } catch (error) {
         console.error(error)
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Parece que algo anda mal...",
-            footer: `<span>${error}</span>`
-        })
+        setTimeout(() => {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Parece que algo anda mal...",
+              footer: `<span>${error}</span>`
+            });
+          }, 1000);
     }
 }
 
@@ -194,6 +204,32 @@ function searchProducts(){
     }
 }
 
+function goToCart() {
+    if(goCart){
+        goCart.addEventListener("click", () => {
+
+            const productCode = getProducts().some(item => item.currencyCode === "UYU");
+            if(productCode){
+                getBag.forEach(item => {
+                    if(item.currencyCode === "USD"){
+                        item.price = Math.round(item.price * currency);
+                        item.currencyCode = "UYU";
+                    }
+                });
+                setProductsBag(getBag);
+            }else{
+                getBag.forEach(item => {
+                    if(item.currencyCode === "UYU"){
+                        item.price = Math.round(item.price / currency);
+                        item.currencyCode = "USD";
+                    }
+                });
+                setProductsBag(getBag);
+            }
+            window.location.href = "cart.html";
+        })
+    }
+}
 
 // CARRITO 
 function renderBagProducts(){
@@ -210,6 +246,7 @@ function renderBagProducts(){
                 <button class="btn btn-remove" type="button" id="${product.id}">Remover del Carrito</button>
             </div>`
         });
+        if(currencyCodeTotal){currencyCodeTotal.innerText = getBag[0].currencyCode};
         showBag.innerHTML = render;
     }else if(showBag){
         showBag.className = "bag__element-name bag__element-empty";
@@ -340,35 +377,5 @@ function scrollBottom() {
 }
 
 
-function goToCart() {
-    if(goCart){
-        goCart.addEventListener("click", () => {
 
-            const productCode = getProducts().some(item => item.currencyCode === "UYU");
-            if(productCode){
-
-                    getBag.forEach(item => {
-                        if(item.currencyCode === "USD"){
-                            item.price = Math.round(item.price * currency);
-                            item.currencyCode = "UYU";
-                        }else{
-                            console.log(`${item.brnad} is alrady in UYU`);
-                        }
-                    });
-                    setProductsBag(getBag);
-            }else{
-                    getBag.forEach(item => {
-                        if(item.currencyCode === "UYU"){
-                            item.price = Math.round(item.price / currency);
-                            item.currencyCode = "USD";
-                        }else{
-                            console.log(`${item.brnad} is alrady in USD`);
-                        }
-                    });
-                    setProductsBag(getBag);
-            }
-            window.location.href = "cart.html";
-        })
-    }
-}
     
