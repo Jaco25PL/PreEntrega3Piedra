@@ -91,7 +91,16 @@
 }
   
 @media screen and (max-width: 760px) {
-    .category__products{
-      grid-template-columns: 1fr;
+    .products__container{
+        margin: 2rem 0;
+    }
+    .product{
+        width: 11rem;
+        &__img{
+            height: 11rem;
+        }
+        &__description{
+            text-align: center;
+        }
     }
 }

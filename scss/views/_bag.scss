@@ -161,7 +161,7 @@
         font-size: 1rem;
     }
     .sec__bag{
-        margin: 2rem 5%;
+        margin: 2rem 0;
     }
     .bag__element{
         margin: 1rem 0;
@@ -194,6 +194,18 @@
     .btn-remove{
         grid-column: 1 / span 2;
         grid-row: 4;
+    }
+    .total__container{
+        margin: 2rem 0;
+        padding: 1rem;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+    .form-alert{
+        text-align: center;
     }
 }
 
