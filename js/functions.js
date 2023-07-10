@@ -1,8 +1,5 @@
-
 async function fetchData() {
-    if(spinner){
-        spinner.style.display = "flex";
-    }
+    if(spinner){spinner.style.display = "flex";}
 
     try {
         const respStore = await fetch("./js/store.json");
@@ -10,18 +7,15 @@ async function fetchData() {
         store = dataStore;
         if (!getProducts()) {
             setProducts(store);
-        }else{
-            if(usdBtn && uyuBtn){
-                const currencyBtnStats = getProducts().some(code => code.currencyCode === "USD")
-                usdBtn.disabled = currencyBtnStats ? true : false;
-                uyuBtn.disabled = currencyBtnStats ? false : true;
-            }
         }
+        if(usdBtn && uyuBtn){
+            const currencyBtnStats = getProducts().some(code => code.currencyCode === "USD")
+            usdBtn.disabled = currencyBtnStats ? true : false;
+            uyuBtn.disabled = currencyBtnStats ? false : true;
+        }
+        
         catProduct(getProducts());
-        if(spinner){
-            spinner.style.display = "none";
-        };
-
+        if(spinner){spinner.style.display = "none";}
 
         const respCurrency = await fetch("https://currency-exchange.p.rapidapi.com/exchange?to=UYU&from=USD&q=1.0",
         {headers: {
@@ -31,18 +25,18 @@ async function fetchData() {
         const resultCurrency = await respCurrency.json();
         currency = resultCurrency;
 
-        convertCurrency(currency);
+        currencyConcertor(currency);
         
     } catch (error) {
         console.error(error)
         setTimeout(() => {
             Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Parece que algo anda mal...",
-              footer: `<span>${error}</span>`
+                icon: "error",
+                title: "Oops...",
+                text: "Parece que algo anda mal...",
+                footer: `<span>${error}</span>`
             });
-          }, 1000);
+        }, 1000);
     }
 }
 
@@ -61,8 +55,7 @@ function getProductsBag() {
     return JSON.parse(localStorage.getItem("allBagProducts")) || [];
 }
 
-
-function convertCurrency(currency){
+function currencyConcertor(currency){
 
     if(usdBtn && uyuBtn){
         usdBtn.addEventListener("click", () => {
@@ -78,7 +71,7 @@ function convertCurrency(currency){
                 const price = targetCurrencyCode === "USD" ?
                     Math.round(product.price / currency) :
                     Math.round(product.price * currency);
-            
+
                 return {
                     ...product,
                     price,
@@ -95,7 +88,7 @@ function convertCurrency(currency){
 }
 
 // add to bag
-function updateAddBtn(){
+function addProductBtn(){
     addBtn = document.querySelectorAll(".btn-addBag");
 
     addBtn.forEach(item => {
@@ -145,7 +138,7 @@ function catProduct(category) {
                             <p>$${item.price}</p>
                             <span>${item.currencyCode}</span>
                         </div>
-                        <button id="${item.id}" type="button" class="btn btn-addBag">Add to Cart</button>
+                        <button id="${item.id}" type="button" class="btn btn-addBag">Agregar al carrito</button>
                     </div>
                 </div>`
         });
@@ -155,7 +148,7 @@ function catProduct(category) {
             bagNumber();
         }
     }
-    updateAddBtn();
+    addProductBtn();
 }
 
 //  navegar entre categorias
@@ -171,7 +164,6 @@ function selectCategory(){
 }
 
 function bagNumber(){
-    const bagNum = document.querySelector("#bagNum");
     let newNumber = getBag.reduce((acc, product) => acc + product.cantidad, 0);
     bagNum.innerHTML = newNumber;
 }
@@ -251,7 +243,7 @@ function renderBagProducts(){
     }else if(showBag){
         showBag.className = "bag__element-name bag__element-empty";
         showBag.innerText = "Tu carrito está vacio :(";
-        bagAmountCont.className = "none";   
+        bagAmountCont.className = "none";
     }
     removeBagItem();
     checkOutBtn();
@@ -283,10 +275,9 @@ function removeItem(e){
 function total() {
     if(bagAmount){
         let totalAmount = 0;
-        
         getBag.forEach(item => {
-        totalAmount += item.price * item.cantidad;
-    });
+            totalAmount += item.price * item.cantidad;
+        });
         bagAmount.innerHTML = `<b>$${totalAmount}</b> `;
     }
 }
@@ -313,9 +304,7 @@ function checkOut(){
     }else{
         Swal.fire({title: "<strong>Nuevo Aquí?</u></strong>",icon: "info",html:"Para ir a pagar debes registrarte",showCloseButton: true,focusConfirm: false,confirmButtonText:"Ok!"})
         .then(value => {
-            if (value) {
-                window.scrollTo(0, document.body.scrollHeight);
-            }})
+            if (value) {window.scrollTo(0, document.body.scrollHeight);}})
     }
 }
 
@@ -327,11 +316,16 @@ function getUserInfo() {
     return sessionStorage.getItem("userRegist");
 }
 
-sendForm.addEventListener("click", valForm);
+
+function valFormEvent() {
+    const sendForm = document.querySelector("#sendForm");
+    sendForm.addEventListener("click", valForm);
+}
+
 function valForm() {
 
     if(userName.value == ""){
-        alertUserName.innerText = "- Debe completar este campo -"
+        alertUserName.innerText = "- Debe completar este campo -";
         return false
     }else{
         alertUserName.innerText = ""
@@ -354,7 +348,6 @@ function userChange(){
         userLogBtn.innerHTML = info;
         userLogBtn.classList.add("log-btn-user");
         logOut.classList.remove("none");
-
         sendForm.innerText = "Nuevo Usuario";
     }else{
         userLogBtn.innerHTML = "Registrarme";
@@ -375,7 +368,3 @@ function scrollBottom() {
         userName.focus();
     });
 }
-
-
-
-    

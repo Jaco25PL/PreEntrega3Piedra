@@ -11,7 +11,9 @@ const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchBtn");
 const usdBtn = document.querySelector("#toUsd");
 const uyuBtn = document.querySelector("#toUyu");
+const bagNum = document.querySelector("#bagNum");
 const goCart = document.querySelector("#goCart");
+
 // BAG
 const getBag = getProductsBag();
 const showBag = document.querySelector("#showBag");
@@ -20,7 +22,6 @@ const bagAmountCont = document.querySelector("#bagAmountCont");
 const currencyCodeTotal = document.querySelector("#currencyCodeTotal");
 // FORM
 const form = document.querySelector("#form");
-const sendForm = document.querySelector("#sendForm");
 const userName = document.querySelector("#formUserName");
 const alertUserName = document.querySelector("#alertUserName");
 const userTel = document.querySelector("#formUserTel");
@@ -36,6 +37,7 @@ goToCart();
 total();
 renderBagProducts();
 
+valFormEvent()
 userChange();
 scrollBottom();
 

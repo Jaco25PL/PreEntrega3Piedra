@@ -59,6 +59,12 @@ body {
   -o-transform: scale(1);
 }
 
+.head__item-currency {
+  padding: 0.3rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
 .spinner {
   width: 100%;
   height: 5rem;
