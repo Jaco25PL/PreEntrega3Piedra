@@ -18,15 +18,6 @@
         "currencyCode": "USD"
     },
     {   
-        "id": 3,
-        "img": "https://f.fcdn.app/imgs/70e3aa/stienda.uy/sam/9eaa/original/catalogo/S2312888060947455801/1920-1200/samsung-galaxy-s23-128gb-5g-light-pink.jpg",
-        "type": "Phone",
-        "brand":"Samsung",
-        "model": "Galaxy S23",
-        "price": 1049,
-        "currencyCode": "USD"
-    },
-    {   
         "id": 27,
         "img": "https://f.fcdn.app/imgs/74d4da/www.market.com.uy/markuy/59f0/original/catalogo/L853_1/1920-1200/celular-samsung-s23-ultra-5g-512gb-v01.jpg",
         "type": "Phone",
